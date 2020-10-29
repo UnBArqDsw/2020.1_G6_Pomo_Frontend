@@ -2,7 +2,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-
+console.log(windowHeight);
 export default StyleSheet.create({
     background: {
       flex: 1,
@@ -22,11 +22,12 @@ export default StyleSheet.create({
       flex: 0.5,
       // width: '45%',
       alignItems: 'center',
-      justifyContent: 'center',
-      // backgroundColor: '#000'
+      // justifyContent: 'center',
+      // backgroundColor: '#000',
     },
     connectText: {
-      fontSize: 20,
+      // fontSize: 20,
+      fontSize: windowHeight * .03,
       marginBottom: 10,
       color: '#FFF',
     },
@@ -61,7 +62,8 @@ export default StyleSheet.create({
       justifyContent: 'center',
     },
     orText: {
-      fontSize: 20,
+      // fontSize: 20,
+      fontSize: windowHeight * .03,
       color: '#FFF',
     },
     body: {
@@ -74,7 +76,7 @@ export default StyleSheet.create({
       backgroundColor: '#BF0123',
       borderWidth: 1,
       width: '85%',
-      height: '19%',
+      height: '23%',
       color: '#FFF',
       marginBottom: 15,
     },
@@ -110,6 +112,5 @@ export default StyleSheet.create({
     },
     btnRecoveryText: {
       color: '#FFF',
-    },
-    
+    },    
 })

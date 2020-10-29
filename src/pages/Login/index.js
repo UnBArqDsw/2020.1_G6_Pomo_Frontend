@@ -8,7 +8,6 @@ import { View,
 
 import styles from './styles';
 import logo from '../../assets/logo.png';
-
 export default function Login() {
     return(
         <View style={styles.background}>
@@ -20,7 +19,7 @@ export default function Login() {
             </View>
             <View style={styles.loginWithContainer}>
                 <Text style={styles.connectText}>
-                    CONECTAR
+                    ──────  CONECTAR  ──────
                 </Text>
                 <TouchableOpacity
                     style={styles.btnLoginWithFacebook}
@@ -40,8 +39,9 @@ export default function Login() {
                 >
                     <Text>Apple</Text>
                 </TouchableOpacity>
+                
                 <Text style={styles.orText}>
-                    ou
+                    ────────    ou    ────────
                 </Text>
 
             </View>
