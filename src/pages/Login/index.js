@@ -20,19 +20,19 @@ export default function Login() {
             </View>
             <View style={styles.loginWithContainer}>
                 <TouchableOpacity
-                    style={styles.btnRegister}
+                    style={styles.btnLoginWith}
                     onPress={() => {}}
                 >
                     <Text>Facebook</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={styles.btnRegister}
+                    style={styles.btnLoginWith}
                     onPress={() => {}}
                 >
                     <Text>Google</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={styles.btnRegister}
+                    style={styles.btnLoginWith}
                     onPress={() => {}}
                 >
                     <Text>Apple</Text>
@@ -55,7 +55,7 @@ export default function Login() {
                 />
 
                 <TouchableOpacity
-                    style={styles.btnRegister}
+                    style={styles.btnLogin}
                     onPress={() => {}}
                 >
                     <Text>Entrar</Text>
@@ -66,13 +66,13 @@ export default function Login() {
                     style={styles.btnRegister}
                     onPress={() => {}}
                 >
-                    <Text>INSCREVER-SE</Text>
+                    <Text style={styles.btnRegisterText}>INSCREVER-SE</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={styles.btnRegister}
+                    style={styles.btnRecovery}
                     onPress={() => {}}
                 >
-                    <Text>RECUPERAR SENHA</Text>
+                    <Text style={styles.btnRecoveryText}>RECUPERAR SENHA</Text>
                 </TouchableOpacity>
             </View>
         </View>

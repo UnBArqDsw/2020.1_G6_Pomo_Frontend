@@ -25,6 +25,9 @@ export default StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    btnLoginWith: {
+
+    },
     body: {
       flex: 0.8,
       alignItems: 'center',
@@ -40,6 +43,17 @@ export default StyleSheet.create({
       // backgroundColor: '#ff0000',
       // height: '33.3333%',
     },
+    input: {
+      backgroundColor: 'white',
+      borderWidth: 1,
+      width: '85%',
+      height: '15%',
+      color: '#FFF',
+      marginBottom: 15,
+    },
+    btnLogin: {
+
+    },
     bottom: {
       flex: 0.3,
       alignItems: 'center',
@@ -47,12 +61,17 @@ export default StyleSheet.create({
       // backgroundColor: '#000'
     },
     bottomMainText: {},
-    input: {
-      backgroundColor: 'white',
-      borderWidth: 1,
-      width: '85%',
-      height: '15%',
-      color: '#FFF',
-      marginTop: 15,
+    btnRegister: {
+      marginBottom: 10
     },
+    btnRegisterText: {
+      color: '#FFF',
+    },
+    btnRecovery: {
+      
+    },
+    btnRecoveryText: {
+      color: '#FFF',
+    },
+    
 })
