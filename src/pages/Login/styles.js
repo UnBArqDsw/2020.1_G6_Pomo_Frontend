@@ -6,56 +6,93 @@ const windowHeight = Dimensions.get('window').height;
 export default StyleSheet.create({
     background: {
       flex: 1,
-      backgroundColor: '#ff0000'
+      backgroundColor: '#FF0004'
     },
     top: {
       flex: 0.3,
       alignItems: 'center',
       justifyContent: 'center',
-      // backgroundColor: '#00ff00',
-      // height: '33.3333%',
+      // backgroundColorgg: '#000',
     },
     logo: {
       width: windowWidth * .20,
       height: windowWidth * .20,
     },
-    topMainText: {},
     loginWithContainer: {
-      flex: 0.4,
+      flex: 0.5,
+      // width: '45%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      // backgroundColor: '#000'
+    },
+    connectText: {
+      fontSize: 20,
+      marginBottom: 10,
+      color: '#FFF',
+    },
+    btnLoginWithFacebook: {
+      width: '50%',
+      height: '15%',
+      borderRadius: 10,
+      backgroundColor: '#576ea4',
+      marginBottom: 10,
       alignItems: 'center',
       justifyContent: 'center',
     },
-    btnLoginWith: {
-
+    btnLoginWithFacebookText: {
+      color: '#FFF',
+    },
+    btnLoginWithGoogle: {
+      width: '50%',
+      height: '15%',
+      borderRadius: 10,
+      backgroundColor: '#FFF',
+      marginBottom: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    btnLoginWithApple: {
+      width: '50%',
+      height: '15%',
+      borderRadius: 10,
+      backgroundColor: '#FFF',
+      marginBottom: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    orText: {
+      fontSize: 20,
+      color: '#FFF',
     },
     body: {
-      flex: 0.8,
+      flex: 0.6,
       alignItems: 'center',
-      justifyContent: 'center',
+      // justifyContent: 'center',
       // backgroundColor: '#0000ff',
-      // height: '33.3333%',
-    },
-    bodyMainText: {},
-    inputsContainer: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      // backgroundColor: '#ff0000',
-      // height: '33.3333%',
     },
     input: {
-      backgroundColor: 'white',
+      backgroundColor: '#BF0123',
       borderWidth: 1,
       width: '85%',
-      height: '15%',
+      height: '19%',
       color: '#FFF',
       marginBottom: 15,
     },
     btnLogin: {
-
+      marginTop: 15,
+      width: '40%',
+      height: '17%',
+      borderRadius: 20,
+      backgroundColor: '#FFF',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    btnLoginText: {
+      color: '#FF005C',
+      fontWeight: 'bold',
     },
     bottom: {
-      flex: 0.3,
+      flex: 0.2,
       alignItems: 'center',
       justifyContent: 'center',
       // backgroundColor: '#000'
@@ -66,6 +103,7 @@ export default StyleSheet.create({
     },
     btnRegisterText: {
       color: '#FFF',
+      
     },
     btnRecovery: {
       

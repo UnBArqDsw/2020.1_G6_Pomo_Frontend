@@ -19,24 +19,30 @@ export default function Login() {
                 />
             </View>
             <View style={styles.loginWithContainer}>
+                <Text style={styles.connectText}>
+                    CONECTAR
+                </Text>
                 <TouchableOpacity
-                    style={styles.btnLoginWith}
+                    style={styles.btnLoginWithFacebook}
                     onPress={() => {}}
                 >
-                    <Text>Facebook</Text>
+                    <Text style={styles.btnLoginWithFacebookText}>facebook</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={styles.btnLoginWith}
+                    style={styles.btnLoginWithGoogle}
                     onPress={() => {}}
                 >
                     <Text>Google</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={styles.btnLoginWith}
+                    style={styles.btnLoginWithApple}
                     onPress={() => {}}
                 >
                     <Text>Apple</Text>
                 </TouchableOpacity>
+                <Text style={styles.orText}>
+                    ou
+                </Text>
 
             </View>
             <View style={styles.body}>
@@ -44,6 +50,8 @@ export default function Login() {
                     style={styles.input}
                     placeholder="E-mail"
                     autoCorrect={false}
+                    placeholderTextColor='#FFF'
+                    keyboardType='email-address'
                     onChangeText={() => {}}
                 />
                 <TextInput
@@ -51,6 +59,7 @@ export default function Login() {
                     placeholder="Senha"
                     autoCorrect={false}
                     secureTextEntry={true}
+                    placeholderTextColor='#FFF'
                     onChangeText={() => {}}
                 />
 
@@ -58,7 +67,7 @@ export default function Login() {
                     style={styles.btnLogin}
                     onPress={() => {}}
                 >
-                    <Text>Entrar</Text>
+                    <Text style={styles.btnLoginText}>ENTRAR</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.bottom}>
