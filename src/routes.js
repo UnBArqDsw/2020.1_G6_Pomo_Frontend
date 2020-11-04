@@ -37,11 +37,8 @@ function Routes() {
           name="New"
           component={Main}
           options={{
-            tabBarIcon: ({color}) => (
-              <Icon color={color} size={20} name="add-circle-outline" />
-            ),
-            tabBarLabel: 'Agendar',
-            tabBarVisible: false,
+            tabBarIcon: () => <Icon size={20} name="timer" />,
+            tabBarLabel: 'time',
           }}
         />
         <Tab.Screen
