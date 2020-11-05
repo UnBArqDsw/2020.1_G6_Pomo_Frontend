@@ -6,7 +6,7 @@ console.log(windowHeight);
 export default StyleSheet.create({
     background: {
       flex: 1,
-      backgroundColor: '#FF0004'
+      // backgroundColor: '#FF0004'
     },
     top: {
       flex: 0.3,

@@ -8,8 +8,11 @@ import { View,
 
 import styles from './styles';
 import logo from '../../assets/logo.png';
+import Background from '../../components/Background';
+
 export default function Login() {
     return(
+        <Background>
         <View style={styles.background}>
             <View style={styles.top}>
                 <Image 
@@ -85,6 +88,7 @@ export default function Login() {
                 </TouchableOpacity>
             </View>
         </View>
+        </Background>
           
       
     );
