@@ -15,11 +15,11 @@ export default StyleSheet.create({
       // backgroundColorgg: '#000',
     },
     logo: {
-      width: windowWidth * .20,
-      height: windowWidth * .20,
+      width: windowWidth * .10,
+      height: windowWidth * .10,
     },
     loginWithContainer: {
-      flex: 0.5,
+      flex: 0.6,
       // width: '45%',
       alignItems: 'center',
       // justifyContent: 'center',
@@ -83,7 +83,7 @@ export default StyleSheet.create({
     btnLogin: {
       marginTop: 15,
       width: '40%',
-      height: '17%',
+      height: '20%',
       borderRadius: 20,
       backgroundColor: '#FFF',
       alignItems: 'center',

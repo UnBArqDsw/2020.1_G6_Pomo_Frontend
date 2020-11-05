@@ -3,7 +3,8 @@ import { View,
         Text,
         Image,
         TextInput,
-        TouchableOpacity, 
+        TouchableOpacity,
+        KeyboardAvoidingView, 
     } from 'react-native';
 
 import styles from './styles';
@@ -13,7 +14,12 @@ import Background from '../../components/Background';
 export default function Login() {
     return(
         <Background>
-        <View style={styles.background}>
+        <KeyboardAvoidingView
+            behavior="height"
+            style={styles.background}
+            // keyboardVerticalOffset = {30}
+        >
+            
             <View style={styles.top}>
                 <Image 
                     style={styles.logo}
@@ -22,7 +28,7 @@ export default function Login() {
             </View>
             <View style={styles.loginWithContainer}>
                 <Text style={styles.connectText}>
-                    ──────  CONECTAR  ──────
+                    ────  CONECTAR  ────
                 </Text>
                 <TouchableOpacity
                     style={styles.btnLoginWithFacebook}
@@ -44,7 +50,7 @@ export default function Login() {
                 </TouchableOpacity>
                 
                 <Text style={styles.orText}>
-                    ────────    ou    ────────
+                    ──────    ou    ──────
                 </Text>
 
             </View>
@@ -87,7 +93,7 @@ export default function Login() {
                     <Text style={styles.btnRecoveryText}>RECUPERAR SENHA</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </KeyboardAvoidingView>
         </Background>
           
       
