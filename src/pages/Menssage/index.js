@@ -6,7 +6,6 @@ import {
   Form,
   Input,
   Chats,
-  InitTitle,
   LMenssage,
   Info,
   Avatar,
@@ -69,16 +68,21 @@ export default function Menssage() {
           returnKeyType="send"
         />
       </Form>
-      <InitTitle>Menssages</InitTitle>
+
       <Chats
         data={chats}
         keyExtractor={(chat) => String(chat.id)}
         renderItem={({item}) => (
           <LMenssage>
-            <Avatar source={{uri: item.avatar_url}} />
+            <Avatar
+              source={{
+                uri:
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSk0-483Jw3zN4jn9qWI_HiLR5Hd4bfUs_Rhg&usqp=CAU',
+              }}
+            />
             <Info>
               <Title>{item.name}</Title>
-              <LastMenssage>{item.LastMenssage}</LastMenssage>
+              <LastMenssage>{'Ultima menssagem ...'}</LastMenssage>
             </Info>
           </LMenssage>
         )}

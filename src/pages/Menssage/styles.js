@@ -1,11 +1,12 @@
 import styled from 'styled-components/native';
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   flex: 1;
-  padding: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 60px;
 `;
 export const Form = styled.View`
   flex-direction: row;
-  padding-bottom: 20px;
 `;
 export const Input = styled.TextInput.attrs({
   placeholderTextColor: '#999',
@@ -50,12 +51,4 @@ export const LastMenssage = styled.Text`
   font-size: 16px;
   color: #666;
   margin-top: 2px;
-`;
-
-export const InitTitle = styled.Text.attrs({
-  numberOfLines: 1,
-})`
-  font-size: 22px
-  font-weight: bold;
-  color: #333;
 `;
