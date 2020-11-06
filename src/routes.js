@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // importa as telas
-import Main from './pages/Main';
+import Main from './pages/Menssage';
 
 const Tab = createBottomTabNavigator();
 
