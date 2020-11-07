@@ -20,12 +20,26 @@ export default function Login() {
     const windowHeight = Dimensions.get('window').height;
 
     const [logo_animated] = useState(new Animated.ValueXY({x: windowWidth * .30, y: windowWidth * .30}));
+    const [offset] = useState(new Animated.ValueXY({x:0, y:80}));
+    const [opacity] = useState(new Animated.Value(0));
     const [ is_keyboard_open, setIsKeyboardOpen ] = useState(false);
 
     useEffect(() => {
         keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', keyboardDidShow);
         keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', keyboardDidHide);
         
+        Animated.parallel([
+            Animated.spring(offset.y, {
+                toValue: 0,
+                speed: 4,
+                bounciness: 0,
+              }),
+              Animated.timing(opacity, {
+                toValue: 1,
+                duration: 2000,
+              }),
+          ]).start();
+
     }, []);
 
     function keyboardDidShow() {
@@ -34,12 +48,21 @@ export default function Login() {
         Animated.parallel([
             Animated.timing(logo_animated.x, {
               toValue: windowWidth * .35,
-              duration: 200,
+              duration: 500,
             }),
             Animated.timing(logo_animated.y, {
               toValue: windowWidth * .35,
-              duration: 200,
+              duration: 500,
             }),
+            Animated.spring(offset.y, {
+                toValue: 20,
+                speed: 6,
+                bounciness: 25,
+              }),
+              Animated.timing(opacity, {
+                toValue: 1,
+                duration: 3000,
+              }),
           ]).start();
     }
 
@@ -49,12 +72,21 @@ export default function Login() {
         Animated.parallel([
             Animated.timing(logo_animated.x, {
               toValue: windowWidth * .30,
-              duration: 200,
+              duration: 500,
             }),
             Animated.timing(logo_animated.y, {
               toValue: windowWidth * .30,
-              duration: 200,
+              duration: 500,
             }),
+            Animated.spring(offset.y, {
+                toValue: 0,
+                speed: 6,
+                bounciness: 20,
+              }),
+              Animated.timing(opacity, {
+                toValue: 1,
+                duration: 3000,
+              }),
           ]).start();
     }
     console.disableYellowBox = true
@@ -102,7 +134,18 @@ export default function Login() {
                 </View>) : (
                     console.log('teclado aberto')
                 )}
-                <View style={styles.body}>
+                <Animated.View 
+                    style={[
+                    styles.body,
+                    {
+                        opacity: opacity,
+                        transform: [
+                        { translateY: offset.y }
+                        ]
+                    }
+                    ]}
+                >
+        
                     <TextInput
                         style={styles.input}
                         placeholder="   E-mail"
@@ -126,7 +169,7 @@ export default function Login() {
                     >
                         <Text style={styles.btnLoginText}>ENTRAR</Text>
                     </TouchableOpacity>
-                </View>
+                </Animated.View>
                 <View style={styles.bottom}>
                     <TouchableOpacity
                         style={styles.btnRegister}
