@@ -48,11 +48,11 @@ export default function Login() {
 
         Animated.parallel([
             Animated.timing(logo_animated.x, {
-              toValue: windowWidth * .35,
+              toValue: windowWidth * .45,
               duration: 500,
             }),
             Animated.timing(logo_animated.y, {
-              toValue: windowWidth * .35,
+              toValue: windowWidth * .45,
               duration: 500,
             }),
             Animated.spring(offset.y, {
