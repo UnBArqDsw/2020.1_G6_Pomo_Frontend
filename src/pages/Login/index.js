@@ -8,6 +8,7 @@ import { View,
         Keyboard,
         Animated,
         Dimensions,
+        StatusBar
     } from 'react-native';
 
 import styles from './styles';
@@ -96,6 +97,7 @@ export default function Login() {
                 behavior="height"
                 style={styles.background}
             >
+                <StatusBar barStyle="light-content" backgroundColor="#FF0004" />
                 
                 <View style={styles.top}>
                     <Animated.Image 
