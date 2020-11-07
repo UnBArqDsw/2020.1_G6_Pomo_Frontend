@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   Container,
   Title,
-  MenButton,
   Header,
   Avatar,
   Body,
@@ -12,8 +11,8 @@ import {
   LUser,
   LTitle,
   Info,
-  Button,
   Description,
+  Button,
   TextButton,
 } from './styles';
 export default function Social({navigation}) {
@@ -59,22 +58,18 @@ export default function Social({navigation}) {
       LastMenssage: 'oi',
     },
   ]);
-  function muda() {
-    setUsers([
-      {
-        name: 'Andre e',
-        avatar_url: 'https://avatars.dicebear.com/api/bottts/t.svg?w=50&h=50',
-        LastMenssage: 'oi',
-      },
-    ]);
-  }
+
   return (
     <Container>
       <Header>
         <Title>{'Social'}</Title>
-        <MenButton onPress={() => navigation.navigate('Main')}>
-          <Icon color={'#333'} size={32} name="chat" />
-        </MenButton>
+
+        <Icon
+          color={'#333'}
+          size={32}
+          name="chat"
+          onPress={() => navigation.navigate('Main')}
+        />
       </Header>
       <Body>
         <Users
@@ -95,7 +90,7 @@ export default function Social({navigation}) {
             </LUser>
           )}
         />
-        <Button onPress={() => muda()}>
+        <Button onPress={() => {}}>
           <TextButton>{'Adicionar Amigo'}</TextButton>
         </Button>
       </Body>
