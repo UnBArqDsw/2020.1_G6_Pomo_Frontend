@@ -77,7 +77,7 @@ export default function Routes() {
           }}
         />
         <Tab.Screen
-          name="New"
+          name="ListChat"
           component={ListChat}
           options={{
             tabBarIcon: ({color}) => (
