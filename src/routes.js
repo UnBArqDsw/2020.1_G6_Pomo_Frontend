@@ -10,6 +10,8 @@ import {CommonActions} from '@react-navigation/native';
 
 // importa as telas
 import Main from './pages/Menssage';
+import Preferencias from './pages/Preferencias';
+//====================================
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -103,7 +105,7 @@ export default function Routes() {
         />
         <Tab.Screen
           name="xx"
-          component={Main}
+          component={Preferencias}
           options={{
             tabBarIcon: ({color}) => (
               <Icon color={color} size={32} name="person" />
