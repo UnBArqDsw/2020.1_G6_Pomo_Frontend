@@ -16,7 +16,7 @@ export default function Preferencias() {
 
   return (
     <Container>
-      <Title>{'Prefêrencias'}</Title>
+      <Title>{'Preferências'}</Title>
       <Header>
         <Avatar
           source={{
