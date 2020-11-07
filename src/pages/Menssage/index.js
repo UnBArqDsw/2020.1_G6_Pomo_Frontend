@@ -50,11 +50,6 @@ export default function Menssage() {
       avatar_url: 'https://avatars.dicebear.com/api/bottts/t.svg?w=50&h=50',
       LastMenssage: 'oi',
     },
-    {
-      name: 'Andre',
-      avatar_url: 'https://avatars.dicebear.com/api/bottts/t.svg?w=50&h=50',
-      LastMenssage: 'oi',
-    },
   ]);
   return (
     <Container>
@@ -71,7 +66,7 @@ export default function Menssage() {
 
       <Chats
         data={chats}
-        keyExtractor={(chat) => String(chat.id)}
+        keyExtractor={(chat) => String(chat.name)}
         renderItem={({item}) => (
           <LMenssage>
             <Avatar

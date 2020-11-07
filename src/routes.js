@@ -11,6 +11,7 @@ import {CommonActions} from '@react-navigation/native';
 // importa as telas
 import Main from './pages/Menssage';
 import Preferencias from './pages/Preferencias';
+import Social from './pages/Social';
 //====================================
 
 const Stack = createStackNavigator();
@@ -76,7 +77,7 @@ export default function Routes() {
           }}
         />
         <Tab.Screen
-          name="New"
+          name="ListChat"
           component={ListChat}
           options={{
             tabBarIcon: ({color}) => (
@@ -95,8 +96,8 @@ export default function Routes() {
           }}
         />
         <Tab.Screen
-          name="x"
-          component={Main}
+          name="Social"
+          component={Social}
           options={{
             tabBarIcon: ({color}) => (
               <Icon color={color} size={32} name="groups" />
@@ -104,7 +105,7 @@ export default function Routes() {
           }}
         />
         <Tab.Screen
-          name="xx"
+          name="Preferencias"
           component={Preferencias}
           options={{
             tabBarIcon: ({color}) => (

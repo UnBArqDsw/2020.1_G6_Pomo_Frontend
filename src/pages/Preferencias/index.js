@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   Container,
   Title,
@@ -12,8 +11,6 @@ import {
   TextButton,
 } from './styles';
 export default function Preferencias() {
-  const [find, setFind] = useState();
-
   return (
     <Container>
       <Title>{'Preferências'}</Title>
