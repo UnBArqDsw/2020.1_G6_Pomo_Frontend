@@ -3,20 +3,21 @@ import { StyleSheet, Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 console.log(windowHeight);
+
 export default StyleSheet.create({
     background: {
       flex: 1,
       // backgroundColor: '#FF0004'
     },
     top: {
-      flex: 0.3,
+      flex: 0.5,
       alignItems: 'center',
       justifyContent: 'center',
       // backgroundColorgg: '#000',
     },
     logo: {
-      width: windowWidth * .10,
-      height: windowWidth * .10,
+      width: windowWidth * .20,
+      height: windowWidth * .20,
     },
     loginWithContainer: {
       flex: 0.6,

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View,
         Text,
         Image,
         TextInput,
         TouchableOpacity,
         KeyboardAvoidingView, 
+        Keyboard,
     } from 'react-native';
 
 import styles from './styles';
@@ -12,12 +13,28 @@ import logo from '../../assets/logo.png';
 import Background from '../../components/Background';
 
 export default function Login() {
+
+    useEffect(() => {
+        keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', keyboardDidShow);
+        keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', keyboardDidHide);
+
+        function keyboardDidShow() {
+            console.log("teclado aberto");
+            setIsKeyboardOpen(true);
+        }
+
+        function keyboardDidHide() {
+            console.log("teclado fechado");
+            setIsKeyboardOpen(false);
+        }
+    });
+
+    const [ is_keyboard_open, setIsKeyboardOpen ] = useState(false);
     return(
         <Background>
         <KeyboardAvoidingView
             behavior="height"
             style={styles.background}
-            // keyboardVerticalOffset = {30}
         >
             
             <View style={styles.top}>
@@ -26,6 +43,7 @@ export default function Login() {
                     source={logo}
                 />
             </View>
+            {!is_keyboard_open ? (
             <View style={styles.loginWithContainer}>
                 <Text style={styles.connectText}>
                     ────  CONECTAR  ────
@@ -53,7 +71,7 @@ export default function Login() {
                     ──────    ou    ──────
                 </Text>
 
-            </View>
+            </View>) : (console.log('teste'))}
             <View style={styles.body}>
                 <TextInput
                     style={styles.input}
