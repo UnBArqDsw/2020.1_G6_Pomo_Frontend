@@ -15,10 +15,10 @@ export default StyleSheet.create({
       justifyContent: 'center',
       // backgroundColorgg: '#000',
     },
-    logo: {
-      width: windowWidth * .20,
-      height: windowWidth * .20,
-    },
+    // logo: {
+    //   width: windowWidth * .20,
+    //   height: windowWidth * .20,
+    // },
     loginWithContainer: {
       flex: 0.6,
       // width: '45%',
@@ -77,9 +77,9 @@ export default StyleSheet.create({
       backgroundColor: '#BF0123',
       borderWidth: 1,
       width: '85%',
-      height: '23%',
+      height: '25%',
       color: '#FFF',
-      marginBottom: 15,
+      marginBottom: 10,
     },
     btnLogin: {
       marginTop: 15,
@@ -106,6 +106,7 @@ export default StyleSheet.create({
     },
     btnRegisterText: {
       color: '#FFF',
+      fontSize: windowWidth * .035
       
     },
     btnRecovery: {
@@ -113,5 +114,6 @@ export default StyleSheet.create({
     },
     btnRecoveryText: {
       color: '#FFF',
-    },    
+      fontSize: windowWidth * .035
+    },   
 })
