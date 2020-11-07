@@ -25,30 +25,25 @@ export default function Login() {
     useEffect(() => {
         keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', keyboardDidShow);
         keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', keyboardDidHide);
-
-        
-
         
     }, []);
 
     function keyboardDidShow() {
-        console.log("teclado aberto");
         setIsKeyboardOpen(true);
 
         Animated.parallel([
             Animated.timing(logo_animated.x, {
-              toValue: windowWidth * .40,
+              toValue: windowWidth * .35,
               duration: 200,
             }),
             Animated.timing(logo_animated.y, {
-              toValue: windowWidth * .40,
+              toValue: windowWidth * .35,
               duration: 200,
             }),
           ]).start();
     }
 
     function keyboardDidHide() {
-        console.log("teclado fechado");
         setIsKeyboardOpen(false);
 
         Animated.parallel([
@@ -62,7 +57,7 @@ export default function Login() {
             }),
           ]).start();
     }
-
+    console.disableYellowBox = true
     return(
         <Background>
             <KeyboardAvoidingView
@@ -105,16 +100,12 @@ export default function Login() {
                     </Text>
 
                 </View>) : (
-                    <View>
-                        <Text>
-                            Conectar de outras formas
-                        </Text>
-                    </View>
+                    console.log('teclado aberto')
                 )}
                 <View style={styles.body}>
                     <TextInput
                         style={styles.input}
-                        placeholder="E-mail"
+                        placeholder="   E-mail"
                         autoCorrect={false}
                         placeholderTextColor='#FFF'
                         keyboardType='email-address'
@@ -122,7 +113,7 @@ export default function Login() {
                     />
                     <TextInput
                         style={styles.input}
-                        placeholder="Senha"
+                        placeholder="   Senha"
                         autoCorrect={false}
                         secureTextEntry={true}
                         placeholderTextColor='#FFF'

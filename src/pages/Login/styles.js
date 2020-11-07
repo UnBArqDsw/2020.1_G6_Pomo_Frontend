@@ -67,6 +67,16 @@ export default StyleSheet.create({
       fontSize: windowHeight * .03,
       color: '#FFF',
     },
+    connectWithOthersButton: {
+      flex: 0.2,
+      alignItems: 'center',
+      justifyContent: 'center'
+      // backgroundColor: '#000'
+    },
+    connectWithOthersButtonText: {
+      fontSize: windowHeight * .02,
+      color: '#000'
+    },
     body: {
       flex: 0.6,
       alignItems: 'center',
@@ -76,6 +86,7 @@ export default StyleSheet.create({
     input: {
       backgroundColor: '#BF0123',
       borderWidth: 1,
+      borderRadius: 5,
       width: '85%',
       height: '25%',
       color: '#FFF',
