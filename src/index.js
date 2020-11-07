@@ -4,7 +4,7 @@ import Routes from './routes';
 export default function app() {
   return (
     <>
-      <Routes />
+      <Routes isSigned={false} />
     </>
   );
 }
