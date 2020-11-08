@@ -13,6 +13,7 @@ import Main from './pages/Menssage';
 import Preferencias from './pages/Preferencias';
 import Social from './pages/Social';
 import Login from './pages/Login';
+import Chat from './pages/Chat';
 //====================================
 
 const Stack = createStackNavigator();
@@ -38,6 +39,40 @@ function ListChat({navigation}) {
         component={Main}
         options={{
           title: 'Menssages',
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.dispatch(CommonActions.goBack());
+              }}>
+              <Icon name="chevron-left" size={20} color="#333" />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function LMensage({navigation}) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        gestureEnabled: false,
+        headerTitleAlign: 'center',
+        headerTransparent: true,
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerLeftContainerStyle: {
+          marginLeft: 20,
+        },
+        headerTintColor: '#333',
+      }}>
+      <Stack.Screen
+        name="Chat"
+        component={Chat}
+        options={{
+          title: 'Usuario',
           headerLeft: () => (
             <TouchableOpacity
               onPress={() => {
@@ -79,8 +114,8 @@ export default function Routes({isSigned}) {
             }}
           />
           <Tab.Screen
-            name="ListChat"
-            component={ListChat}
+            name="Chat"
+            component={LMensage}
             options={{
               tabBarIcon: ({color}) => (
                 <Icon color={color} size={32} name="stacked-line-chart" />

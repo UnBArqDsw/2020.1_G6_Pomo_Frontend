@@ -68,7 +68,7 @@ export default function Social({navigation}) {
           color={'#333'}
           size={32}
           name="chat"
-          onPress={() => navigation.navigate('Main')}
+          onPress={() => navigation.navigate('Chat')}
         />
       </Header>
       <Body>
