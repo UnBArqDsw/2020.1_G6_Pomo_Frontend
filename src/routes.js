@@ -11,6 +11,8 @@ import {CommonActions} from '@react-navigation/native';
 // importa as telas
 import Main from './pages/Menssage';
 import Preferencias from './pages/Preferencias';
+import Social from './pages/Social';
+import Login from './pages/Login';
 //====================================
 
 const Stack = createStackNavigator();
@@ -49,70 +51,76 @@ function ListChat({navigation}) {
     </Stack.Navigator>
   );
 }
-export default function Routes() {
+export default function Routes({isSigned}) {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        tabBarOptions={{
-          resetOnBlur: true,
-          activeTintColor: '#e91e63',
-          keyboardHidesTabBar: true,
-          inactiveTintColor: '#000000',
-          showLabel: false,
-          style: {
-            backgroundColor: '#e0e0e0',
-            borderTopLeftRadius: 26,
-            borderTopRightRadius: 26,
-          },
-        }}>
-        {/* cada tabScreen e um icone da navbar. so mudar o nome do compoente */}
-        <Tab.Screen
-          name="Main"
-          component={Main}
-          options={{
-            tabBarIcon: ({color}) => (
-              <Icon color={color} size={32} name="playlist-add-check" />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="New"
-          component={ListChat}
-          options={{
-            tabBarIcon: ({color}) => (
-              <Icon color={color} size={32} name="stacked-line-chart" />
-            ),
-            tabBarVisible: false,
-          }}
-        />
-        <Tab.Screen
-          name="Profile"
-          component={Main}
-          options={{
-            tabBarIcon: ({color}) => (
-              <Icon color={color} size={32} name="timer" />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="x"
-          component={Main}
-          options={{
-            tabBarIcon: ({color}) => (
-              <Icon color={color} size={32} name="groups" />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="xx"
-          component={Preferencias}
-          options={{
-            tabBarIcon: ({color}) => (
-              <Icon color={color} size={32} name="person" />
-            ),
-          }}
-        />
-      </Tab.Navigator>
+      {isSigned ? (
+        <Tab.Navigator
+          tabBarOptions={{
+            resetOnBlur: true,
+            activeTintColor: '#e91e63',
+            keyboardHidesTabBar: true,
+            inactiveTintColor: '#000000',
+            showLabel: false,
+            style: {
+              backgroundColor: '#e0e0e0',
+              borderTopLeftRadius: 26,
+              borderTopRightRadius: 26,
+            },
+          }}>
+          {/* cada tabScreen e um icone da navbar. so mudar o nome do compoente */}
+          <Tab.Screen
+            name="Main"
+            component={Main}
+            options={{
+              tabBarIcon: ({color}) => (
+                <Icon color={color} size={32} name="playlist-add-check" />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="ListChat"
+            component={ListChat}
+            options={{
+              tabBarIcon: ({color}) => (
+                <Icon color={color} size={32} name="stacked-line-chart" />
+              ),
+              tabBarVisible: false,
+            }}
+          />
+          <Tab.Screen
+            name="Profile"
+            component={Main}
+            options={{
+              tabBarIcon: ({color}) => (
+                <Icon color={color} size={32} name="timer" />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Social"
+            component={Social}
+            options={{
+              tabBarIcon: ({color}) => (
+                <Icon color={color} size={32} name="groups" />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Preferencias"
+            component={Preferencias}
+            options={{
+              tabBarIcon: ({color}) => (
+                <Icon color={color} size={32} name="person" />
+              ),
+            }}
+          />
+        </Tab.Navigator>
+      ) : (
+        <Stack.Navigator headerMode="none">
+          <Stack.Screen name="SignIn" component={Login} />
+        </Stack.Navigator>
+      )}
     </NavigationContainer>
   );
 }
