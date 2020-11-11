@@ -13,6 +13,7 @@ import Main from './pages/Menssage';
 import Preferencias from './pages/Preferencias';
 import Social from './pages/Social';
 import Login from './pages/Login';
+import Stats from './pages/Stats';
 //====================================
 
 const Stack = createStackNavigator();
@@ -54,7 +55,7 @@ function ListChat({navigation}) {
 export default function Routes({isSigned}) {
   return (
     <NavigationContainer>
-      {isSigned ? (
+      {!isSigned ? (
         <Tab.Navigator
           tabBarOptions={{
             resetOnBlur: true,
@@ -77,15 +78,14 @@ export default function Routes({isSigned}) {
                 <Icon color={color} size={32} name="playlist-add-check" />
               ),
             }}
-          />
+          />  
           <Tab.Screen
-            name="ListChat"
-            component={ListChat}
+            name="Stats"
+            component={Stats}
             options={{
               tabBarIcon: ({color}) => (
                 <Icon color={color} size={32} name="stacked-line-chart" />
               ),
-              tabBarVisible: false,
             }}
           />
           <Tab.Screen
