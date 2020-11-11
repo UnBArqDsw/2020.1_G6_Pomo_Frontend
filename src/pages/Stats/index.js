@@ -1,15 +1,30 @@
 import React from 'react';
 import {
-  View,
-  Text
-} from 'react-native';
-import styles from './styles';
+    Container,
+    Graphics,
+    LGraphics,
+    LTitle,
+    Info,
+    Description,
+
+  } from './styles';
 
 export default function Stats() {
-
+    const users =  [{name: 'grafico 1'},{name: 'grafico 2'},{name: 'grafico 3'},{name: 'grafico 4'}]
     return (
-        <View style={styles.background}>
-            <Text>Tela de Stats</Text>
-        </View>
+        <Container>
+            <Graphics
+            data={users}
+            keyExtractor={(user) => String(user.name)}
+            renderItem={({item}) => (
+                <LGraphics>
+                    <Info>
+                        <LTitle>{item.name}</LTitle>
+                        <Description>{'descrição'}</Description>
+                    </Info>
+                </LGraphics>
+            )}
+            />
+        </Container>
     );
 }
