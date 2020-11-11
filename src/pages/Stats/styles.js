@@ -17,30 +17,18 @@ export const Graphics = styled.FlatList.attrs({
 `;
 
 export const LGraphics = styled.View`
-  background: #909090;
   border-radius: 26px;
-  padding: 70px 15px;
   margin-bottom: 20px;
   flex-direction: row;
   align-items: center;
 `;
 
-export const LTitle = styled.Text.attrs({
-  numberOfLines: 1,
-})`
-  font-size: 20px;
-  font-weight: bold;
-  padding-bottom: 10px;
-  color: #333;
+export const LTitle = styled.View`
+  padding: 10px 20px;
   align-self: center;
 `;
 
 export const Info = styled.View`
-  margin-left: 15px;
   flex: 1;
-`;
-export const Description = styled.Text`
-  font-size: 13px;
-  color: #666;
-  margin-top: 2px;
+  align-items: center;
 `;
