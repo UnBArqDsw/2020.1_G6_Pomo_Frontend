@@ -14,3 +14,13 @@ export const ItemContainer = styled.View`
   align-items: flex-start;
   border-radius: 50px;
 `;
+export const ItemTitle = styled.Text`
+  font-size: 25px;
+  font-weight: bold;
+  color: #fafafa;
+`;
+
+export const ItemDescription = styled.Text`
+  font-size: 18px;
+  color: #fafafa;
+`;
