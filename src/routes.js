@@ -13,6 +13,7 @@ import Main from './pages/Menssage';
 import Preferencias from './pages/Preferencias';
 import Social from './pages/Social';
 import Login from './pages/Login';
+import SessionFoco from './pages/SessionFoco';
 //====================================
 
 const Stack = createStackNavigator();
