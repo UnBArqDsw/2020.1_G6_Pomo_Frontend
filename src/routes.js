@@ -89,6 +89,14 @@ function LMensage({navigation}) {
 export default function Routes({isSigned}) {
   return (
     <NavigationContainer>
+     { switch (key) {
+        case value:
+          
+          break;
+      
+        default:
+          break;
+      }}
       {isSigned ? (
         <Tab.Navigator
           tabBarOptions={{
