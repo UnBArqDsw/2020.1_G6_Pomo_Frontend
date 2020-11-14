@@ -97,6 +97,17 @@ export default function Register() {
                             </TouchableOpacity>
 
                         </View>
+                        <View style={styles.detailsContainer}>
+                      
+                            <Text style={styles.whatispomoText}>O que é o POMO?</Text>
+                            <Text style={styles.pomoIsText}>O Pomo é uma aplicação de gerência de atividades, ou como apelidamos, sessões de foco, que, além de faze-lo de forma simples e prática, adiciona informações importantes de forma visual, usando gráficos, para que o usuário consiga ter uma idéia de sua produtividade.
+
+O app incentiva os usuários a completarem suas atividades com desafios entre os amigos, feed e chat.</Text>
+                        </View>
+                        <View style={styles.documentationContainer}>
+                        
+                            <Text style={styles.documentationText}>Documentação Oficial</Text>
+                        </View>
                     </View>
                 )}
             />
