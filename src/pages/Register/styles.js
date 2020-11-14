@@ -59,6 +59,27 @@ export default StyleSheet.create({
         borderRadius: 7,
         color: '#242940',
       },
+      btnRegisterContainer: {
+          flex: 1,
+          width: '100%',
+          height: '100%',
+        //   backgroundColor: '#fff',
+          alignItems: 'center',
+      },
+
+      btnRegister: {
+        width: '40%',
+        height: 50,
+        borderRadius: 20,
+        backgroundColor: '#FFF',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      btnRegisterText: {
+        color: '#FF005E',
+        fontSize: windowWidth * .04,
+        fontWeight: 'bold',
+    },
 
 
 });

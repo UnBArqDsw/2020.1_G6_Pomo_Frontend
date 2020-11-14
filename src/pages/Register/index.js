@@ -90,7 +90,13 @@ export default function Register() {
                                   autoCapitalize={false}
                               />
                           </View>
-                      </View>
+                        </View>
+                        <View style={styles.btnRegisterContainer}>
+                            <TouchableOpacity style={styles.btnRegister}>
+                                <Text style={styles.btnRegisterText}> Cadastrar</Text>
+                            </TouchableOpacity>
+
+                        </View>
                     </View>
                 )}
             />
