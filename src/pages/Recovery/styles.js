@@ -8,16 +8,19 @@ export default StyleSheet.create({
         // backgroundColor: '#fff4f4'
     }, 
     header: {
-        flex: .13,
+        flex: .11,
         alignItems: 'center',
         justifyContent: 'center',
-        // backgroundColor: '#FF005C',
-        borderBottomLeftRadius: 15,
-        borderBottomRightRadius: 15,
+        // backgroundColor: '#FF0004',
+        borderBottomWidth: 2,
+        borderColor: '#e1e1e1',
+        // borderBottomLeftRadius: 15,
+        // borderBottomRightRadius: 15,
     },
     headerText: {
         fontSize: windowWidth * .1,
-        color: '#fff',
+        fontWeight: 'bold',
+        color: '#e1e1e1',
     },
     body: {
         flex: 1,
@@ -26,26 +29,30 @@ export default StyleSheet.create({
     },
     bodyText: {
         marginTop: 20,
+        color: '#e1e1e1',
+        fontWeight: 'bold',
     },
     input: {
-        // backgroundColor: '#e1e1e1',
+        backgroundColor: '#BF0123',
         borderWidth: 1,
         borderRadius: 5,
         width: '85%',
         height: '11%',
-        color: '#000',
+        color: '#FFF',
         marginTop: 20,
     },
     btnSend: {
         marginTop: 15,
         width: '40%',
-        height: '10%',
+        height: '9%',
         borderRadius: 20,
         backgroundColor: '#FFF',
         alignItems: 'center',
         justifyContent: 'center',
       },
       btnSendText: {
-          color: '#FF005C'
+          color: '#FF005E',
+          fontSize: windowWidth * .05,
+          fontWeight: 'bold',
       },
 });

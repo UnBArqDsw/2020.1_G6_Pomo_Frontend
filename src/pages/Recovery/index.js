@@ -5,6 +5,7 @@ import {
     TextInput,
     TouchableOpacity,
     StatusBar,
+    KeyboardAvoidingView,
 } from 'react-native';
 
 import styles from './styles';
@@ -14,16 +15,16 @@ export default function Recovery() {
 
   return (
         <Background>
-            <View style={styles.background}>
+            <KeyboardAvoidingView behavior='height' style={styles.background}>
                 <StatusBar barStyle="light-content" backgroundColor="#FF0004" />
                 <View style={styles.header}>
                     <Text style={styles.headerText}>
-                        Recuperar senha
+                        Recuperar Senha
                     </Text>
                 </View>
                 <View style={styles.body}>
                     <Text style={styles.bodyText}>
-                        Digite seu e-mail para recuperar a senha
+                        Um e-mail será enviado com as informações
                         </Text>
                     <TextInput
                         style={styles.input}
@@ -38,7 +39,7 @@ export default function Recovery() {
                     </TouchableOpacity>
                 </View>
                 
-            </View>
+            </KeyboardAvoidingView>
         </Background>
     
   );
