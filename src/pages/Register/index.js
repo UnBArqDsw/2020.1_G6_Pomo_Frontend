@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
     View,
     Text,
@@ -15,10 +15,16 @@ import styles from './styles';
 import Background from '../../components/Background';
 import logo from '../../assets/logo.png';
 import Icon from "react-native-vector-icons/Feather";
+import Icon2 from "react-native-vector-icons/FontAwesome";
+import DatePicker from 'react-native-datepicker'
 
 export default function Register() {
 
-    const myIcon = (<Icon name="rocket" size={30} color="#900" />)
+    const [ date, setDate ] = useState(''); 
+
+    function changeDate(value) {
+        setDate(value);
+    }
   return (
     <Background>
         <KeyboardAvoidingView behavior='height' style={styles.background}>
@@ -97,6 +103,31 @@ export default function Register() {
                                     autoCapitalize={false}
                                 />
                           </View>
+                            <View style={styles.dateContainer}>
+                                
+                                <Icon2 name="table" size={30} color="#00FF00" style={{marginRight: 10}}/>
+                                <DatePicker
+                                    style={styles.dateInput}
+                                    mode="date"
+                                    date={date}
+                                    placeholder="Data de nascimento"
+                                    format="DD-MM-YYYY"
+                                    minDate="01-01-1916"
+                                    maxDate="01-01-2008"
+                                    confirmBtnText="Confirm"
+                                    cancelBtnText="Cancel"
+                                    showIcon={false}
+                                    customStyles={{
+                                        placeholderText: {
+                                            fontSize: 13,
+                                            color: '#7c86b5',
+                                        }
+                                    // ... You can check the source to find the other keys.
+                                    }}
+                                    onDateChange={changeDate}
+                                    
+                                />
+                            </View>
                         </View>
                         <View style={styles.btnRegisterContainer}>
                             <TouchableOpacity style={styles.btnRegister}>

@@ -17,6 +17,7 @@
     "react": "16.13.1",
     "react-feather": "^2.0.8",
     "react-native": "0.63.2",
+    "react-native-datepicker": "^1.7.2",
     "react-native-elements": "^3.0.0-alpha.1",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-linear-gradient": "^2.5.6",

@@ -26,7 +26,7 @@ export default StyleSheet.create({
         flex: 1,
     },
     body: {
-        alignItems: 'center'
+        alignItems: 'center',
     },
     descriptionWelcome: {
         fontSize: 15,
@@ -43,7 +43,8 @@ export default StyleSheet.create({
         alignItems: 'center',
         marginTop: 30,
         marginBottom: 20,
-        // backgroundColor: '#FFF'
+        // backgroundColor: '#FFF',
+        width: '100%',
     },
     inputsContainerTextInput: {
         flexDirection: 'row',
@@ -58,6 +59,17 @@ export default StyleSheet.create({
         height: 50,
         borderRadius: 7,
         color: '#242940',
+    },
+    dateContainer: {
+        flexDirection: 'row',
+        width: '100%',
+        marginLeft: 10,
+        alignItems: 'center',
+    },
+    dateInput: {
+        width: '50%',
+        borderRadius: 9,
+        backgroundColor: '#FFF',
     },
     btnRegisterContainer: {
         flex: 1,
