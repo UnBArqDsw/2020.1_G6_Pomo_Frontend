@@ -18,7 +18,7 @@ import Chat from './pages/Chat';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-Bexport function LSocial({navigation}) {
+export function LSocial({navigation}) {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -38,6 +38,7 @@ Bexport function LSocial({navigation}) {
     </Stack.Navigator>
   );
 }
+
 export function ListChat({navigation}) {
   return (
     <Stack.Navigator
@@ -108,6 +109,16 @@ export function LMensage({navigation}) {
 }
 export default function Routes({isSigned}) {
   var nav1;
+  function getTabBarVisible(route) {
+    const routeName = route.state
+      ? route.state.routes[route.state.index].name
+      : route.params?.screen || 'Main';
+
+    if (routeName === 'lchat') {
+      return false;
+    }
+    return true;
+  }
 
   switch (isSigned) {
     case true:
@@ -159,11 +170,12 @@ export default function Routes({isSigned}) {
           <Tab.Screen
             name="Social"
             component={LSocial}
-            options={{
+            options={({route}) => ({
+              tabBarVisible: getTabBarVisible(route),
               tabBarIcon: ({color}) => (
                 <Icon color={color} size={32} name="groups" />
               ),
-            }}
+            })}
           />
           <Tab.Screen
             name="Preferencias"
