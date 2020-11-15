@@ -6,7 +6,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export default function Timer() {
   const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(2);
+  const [minutes, setMinutes] = useState(25);
   const [pause, setPause] = useState(true);
   const [timer, setTimer] = useState(null);
 
@@ -27,7 +27,7 @@ export default function Timer() {
 
         setSeconds(aux_seconds);
         console.log(aux_seconds);
-      }, 1000);
+      }, 100);
 
       console.log(time);
     } else {
@@ -39,7 +39,7 @@ export default function Timer() {
       <AnimatedCircularProgress
         size={250}
         width={8}
-        fill={85}
+        fill={((minutes * 60 + seconds) * 100) / 1500}
         tintColor="#FF0000"
         backgroundColor="#000">
         {() => (
