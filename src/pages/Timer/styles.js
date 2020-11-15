@@ -13,12 +13,12 @@ export const Init = styled.Text`
 `;
 
 export const MenButton = styled(RectButton)`
-  border-radius: 75;
+  border-radius: 75px;
   border-width: 1px;
   border-style: solid;
   background-color: #ff0000;
-  height: 150;
-  width: 150;
+  height: 150px;
+  width: 150px;
   align-items: center;
   justify-content: center;
 `;
