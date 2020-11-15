@@ -56,7 +56,7 @@ function ListChat({navigation}) {
 export default function Routes({isSigned}) {
   return (
     <NavigationContainer>
-      {isSigned ? (
+      {!isSigned ? (
         <Tab.Navigator
           tabBarOptions={{
             resetOnBlur: true,
