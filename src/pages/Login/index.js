@@ -169,7 +169,7 @@ export default function Login() {
           </TouchableOpacity>
         </Animated.View>
         <View style={styles.bottom}>
-          <TouchableOpacity style={styles.btnRegister} onPress={() => {}}>
+          <TouchableOpacity style={styles.btnRegister} onPress={() => navigateTo('Register')}>
             <Text style={styles.btnRegisterText}>INSCREVER-SE</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.btnRecovery} onPress={() => navigateTo('Recovery')}>

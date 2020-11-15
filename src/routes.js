@@ -13,6 +13,7 @@ import Main from './pages/Menssage';
 import Preferencias from './pages/Preferencias';
 import Social from './pages/Social';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import Recovery from './pages/Recovery';
 //====================================
 
@@ -55,7 +56,7 @@ function ListChat({navigation}) {
 export default function Routes({isSigned}) {
   return (
     <NavigationContainer>
-      {isSigned ? (
+      {!isSigned ? (
         <Tab.Navigator
           tabBarOptions={{
             resetOnBlur: true,
@@ -120,6 +121,7 @@ export default function Routes({isSigned}) {
       ) : (
         <Stack.Navigator headerMode="none">
           <Stack.Screen name="SignIn" component={Login} />
+          <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="Recovery" component={Recovery} />
         </Stack.Navigator>
       )}
