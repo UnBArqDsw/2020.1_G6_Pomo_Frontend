@@ -15,6 +15,7 @@ import Social from './pages/Social';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Recovery from './pages/Recovery';
+import Timer from './pages/Timer';
 //====================================
 
 const Stack = createStackNavigator();
@@ -91,8 +92,8 @@ export default function Routes({isSigned}) {
             }}
           />
           <Tab.Screen
-            name="Profile"
-            component={Main}
+            name="Timer"
+            component={Timer}
             options={{
               tabBarIcon: ({color}) => (
                 <Icon color={color} size={32} name="timer" />
