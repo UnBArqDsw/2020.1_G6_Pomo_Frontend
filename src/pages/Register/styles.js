@@ -96,7 +96,9 @@ export default StyleSheet.create({
         textAlign: 'justify'
     },
     documentationContainer: {
-        alignItems: 'center'
+        alignItems: 'center',
+        // backgroundColor: '#000',
+        height: 200,
     },
     documentationText: {
         fontWeight: 'bold',
@@ -106,6 +108,9 @@ export default StyleSheet.create({
     },
     icons: {
         marginRight: 10,
+    },
+    iconGit: {
+        // marginBottom: 50,
     },
 
 

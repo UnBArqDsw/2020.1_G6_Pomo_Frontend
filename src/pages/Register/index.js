@@ -8,6 +8,7 @@ import {
     FlatList,
     TextInput,
     TouchableOpacity,
+    Linking,
 } from 'react-native';
 
 import styles from './styles';
@@ -112,6 +113,10 @@ O app incentiva os usuários a completarem suas atividades com desafios entre os
                         </View>
                         <View style={styles.documentationContainer}>
                             <Text style={styles.documentationText}>Documentação Oficial</Text>
+                            <TouchableOpacity onPress={() => {Linking.openURL('https://github.com/UnBArqDsw/2020.1_G6_Pomo')}}>
+                                <Icon name="github" size={60} color="#00FF00" style={styles.iconGit}/>
+
+                            </TouchableOpacity>
                         </View>
                     </View>
                 )}
