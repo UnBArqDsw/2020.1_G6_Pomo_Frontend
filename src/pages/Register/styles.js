@@ -102,8 +102,11 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 25,
         color: '#FFF',
+        marginBottom: 20,
     },
-
+    icons: {
+        marginRight: 10,
+    },
 
 
 

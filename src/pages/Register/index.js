@@ -17,6 +17,7 @@ import Icon from "react-native-vector-icons/Feather";
 
 export default function Register() {
 
+    const myIcon = (<Icon name="rocket" size={30} color="#900" />)
   return (
     <Background>
         <KeyboardAvoidingView behavior='height' style={styles.background}>
@@ -37,58 +38,63 @@ export default function Register() {
                         />    
 
                         <Text style={styles.descriptionWelcome}>Cadastre-se agora mesmo,</Text>
-                        <Text style={styles.descriptionText}>E planeje, execute suas tarefas de uma forma mais fácil!</Text>
+                        <Text style={styles.descriptionText}>e aumente sua organização e produtividade!</Text>
                         
                         <View style={styles.inputsContainer}>
                           <View style={styles.inputsContainerTextInput}>
-                              <TextInput
-                                  style={styles.inputsForm}
-                                  placeholder='Digite seu nome completo'
-                                  placeholderTextColor='#7c86b5'
-                                  autoCorrect={false}
-                                  autoCapitalize={false}
-                              />
+                                <Icon name="user" size={30} color="#00FF00" style={styles.icons}/>
+                                <TextInput
+                                    style={styles.inputsForm}
+                                    placeholder='Digite seu nome completo'
+                                    placeholderTextColor='#7c86b5'
+                                    autoCorrect={false}
+                                    autoCapitalize={false}
+                                />
                           </View>
                           <View style={styles.inputsContainerTextInput}>
-                              <TextInput
-                                  style={styles.inputsForm}
-                                  placeholder='Digite seu e-mail'
-                                  placeholderTextColor='#7c86b5'
-                                  autoCorrect={false}
-                                  autoCapitalize={false}
-                                  keyboardType={'email-address'}
-                              />
+                                <Icon name="mail" size={30} color="#00FF00" style={styles.icons}/>
+                                <TextInput
+                                    style={styles.inputsForm}
+                                    placeholder='Digite seu e-mail'
+                                    placeholderTextColor='#7c86b5'
+                                    autoCorrect={false}
+                                    autoCapitalize={false}
+                                    keyboardType={'email-address'}
+                                />
 
                           </View>
                           <View style={styles.inputsContainerTextInput}>
-                              <TextInput
-                                  style={styles.inputsForm}
-                                  placeholder='Digite sua senha'
-                                  placeholderTextColor='#7c86b5'
-                                  autoCorrect={false}
-                                  autoCapitalize={false}
-                                  secureTextEntry={true}
-                              />
+                                <Icon name="lock" size={30} color="#00FF00" style={styles.icons}/>
+                                <TextInput
+                                    style={styles.inputsForm}
+                                    placeholder='Digite sua senha'
+                                    placeholderTextColor='#7c86b5'
+                                    autoCorrect={false}
+                                    autoCapitalize={false}
+                                    secureTextEntry={true}
+                                />
                           </View>
                   
                           <View style={styles.inputsContainerTextInput}>
-                              <TextInput
-                                  style={styles.inputsForm}
-                                  placeholder='Confirmação de senha'
-                                  placeholderTextColor='#7c86b5'
-                                  autoCorrect={false}
-                                  autoCapitalize={false}
-                                  secureTextEntry={true}
-                              />
+                                <Icon name="lock" size={30} color="#00FF00" style={styles.icons}/>
+                                <TextInput
+                                    style={styles.inputsForm}
+                                    placeholder='Confirmação de senha'
+                                    placeholderTextColor='#7c86b5'
+                                    autoCorrect={false}
+                                    autoCapitalize={false}
+                                    secureTextEntry={true}
+                                />
                           </View>
                           <View style={styles.inputsContainerTextInput}>
-                              <TextInput
-                                  style={styles.inputsForm}
-                                  placeholder='Telefone'
-                                  placeholderTextColor='#7c86b5'
-                                  autoCorrect={false}
-                                  autoCapitalize={false}
-                              />
+                                <Icon name="phone" size={30} color="#00FF00" style={styles.icons}/>
+                                <TextInput
+                                    style={styles.inputsForm}
+                                    placeholder='Telefone'
+                                    placeholderTextColor='#7c86b5'
+                                    autoCorrect={false}
+                                    autoCapitalize={false}
+                                />
                           </View>
                         </View>
                         <View style={styles.btnRegisterContainer}>
@@ -105,7 +111,6 @@ export default function Register() {
 O app incentiva os usuários a completarem suas atividades com desafios entre os amigos, feed e chat.</Text>
                         </View>
                         <View style={styles.documentationContainer}>
-                        
                             <Text style={styles.documentationText}>Documentação Oficial</Text>
                         </View>
                     </View>
