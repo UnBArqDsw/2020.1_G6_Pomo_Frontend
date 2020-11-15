@@ -19,11 +19,12 @@ export const Title = styled.Text.attrs({
 `;
 
 export const MenButton = styled(RectButton)`
-  align-self: stretch;
+  align-self: center;
   border-radius: 23px;
   border-width: 1px;
   border-style: solid;
-
+  align-items: center;
+  background-color: '#000';
   height: 38px;
 `;
 
