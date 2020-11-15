@@ -18,11 +18,7 @@ import Chat from './pages/Chat';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-export function LSocial({navigation}) {
-  navigation.dispatch({
-    ...CommonActions.setParams({user: 'Wojtek'}),
-    source: Chat.key,
-  });
+Bexport function LSocial({navigation}) {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -110,10 +106,7 @@ export function LMensage({navigation}) {
     </Stack.Navigator>
   );
 }
-export default function Routes({isSigned, props, state}) {
-  {
-    console.tron.log([props, state]);
-  }
+export default function Routes({isSigned}) {
   var nav1;
 
   switch (isSigned) {
