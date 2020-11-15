@@ -30,7 +30,7 @@ export default function Register() {
         <KeyboardAvoidingView behavior='height' style={styles.background}>
             <StatusBar barStyle="light-content" backgroundColor="#FF0004" />
             <View style={styles.header}>
-                <Text style={styles.headerText}>Bem-vind@ ao <Text style={{color:'#00FF00'}}>POMO</Text>!</Text>
+                <Text style={styles.headerText}>Bem-vind@ ao <Text style={{color:'#FFF'}}>POMO</Text>!</Text>
             </View>
             <FlatList
                 style={styles.bodyContainer}
@@ -49,7 +49,7 @@ export default function Register() {
                         
                         <View style={styles.inputsContainer}>
                           <View style={styles.inputsContainerTextInput}>
-                                <Icon name="user" size={30} color="#00FF00" style={styles.icons}/>
+                                <Icon name="user" size={30} color="#FFF" style={styles.icons}/>
                                 <TextInput
                                     style={styles.inputsForm}
                                     placeholder='Digite seu nome completo'
@@ -59,7 +59,7 @@ export default function Register() {
                                 />
                           </View>
                           <View style={styles.inputsContainerTextInput}>
-                                <Icon name="mail" size={30} color="#00FF00" style={styles.icons}/>
+                                <Icon name="mail" size={30} color="#FFF" style={styles.icons}/>
                                 <TextInput
                                     style={styles.inputsForm}
                                     placeholder='Digite seu e-mail'
@@ -71,7 +71,7 @@ export default function Register() {
 
                           </View>
                           <View style={styles.inputsContainerTextInput}>
-                                <Icon name="lock" size={30} color="#00FF00" style={styles.icons}/>
+                                <Icon name="lock" size={30} color="#FFF" style={styles.icons}/>
                                 <TextInput
                                     style={styles.inputsForm}
                                     placeholder='Digite sua senha'
@@ -83,7 +83,7 @@ export default function Register() {
                           </View>
                   
                           <View style={styles.inputsContainerTextInput}>
-                                <Icon name="lock" size={30} color="#00FF00" style={styles.icons}/>
+                                <Icon name="lock" size={30} color="#FFF" style={styles.icons}/>
                                 <TextInput
                                     style={styles.inputsForm}
                                     placeholder='Confirmação de senha'
@@ -94,7 +94,7 @@ export default function Register() {
                                 />
                           </View>
                           <View style={styles.inputsContainerTextInput}>
-                                <Icon name="phone" size={30} color="#00FF00" style={styles.icons}/>
+                                <Icon name="phone" size={30} color="#FFF" style={styles.icons}/>
                                 <TextInput
                                     style={styles.inputsForm}
                                     placeholder='Telefone'
@@ -105,7 +105,7 @@ export default function Register() {
                           </View>
                             <View style={styles.dateContainer}>
                                 
-                                <Icon2 name="table" size={30} color="#00FF00" style={{marginRight: 10}}/>
+                                <Icon2 name="table" size={30} color="#FFF" style={{marginRight: 10}}/>
                                 <DatePicker
                                     style={styles.dateInput}
                                     mode="date"
@@ -145,7 +145,7 @@ O app incentiva os usuários a completarem suas atividades com desafios entre os
                         <View style={styles.documentationContainer}>
                             <Text style={styles.documentationText}>Documentação Oficial</Text>
                             <TouchableOpacity onPress={() => {Linking.openURL('https://github.com/UnBArqDsw/2020.1_G6_Pomo')}}>
-                                <Icon name="github" size={60} color="#00FF00" style={styles.iconGit}/>
+                                <Icon name="github" size={60} color="#FFF" style={styles.iconGit}/>
 
                             </TouchableOpacity>
                         </View>
