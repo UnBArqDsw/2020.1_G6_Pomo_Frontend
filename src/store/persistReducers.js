@@ -6,7 +6,7 @@ export default (reducers) => {
     {
       key: 'pomo',
       storage: AsyncStorage,
-      whitelist: ['auth', 'user'],
+      whitelist: ['auth', 'user', 'navigate'],
     },
     reducers,
   );

@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 
+import {chatNav} from '../../store/modules/navigate/actions';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   Container,
@@ -58,6 +60,13 @@ export default function Social({navigation}) {
       LastMenssage: 'oi',
     },
   ]);
+  const dispatch = useDispatch();
+  function handleSubmit() {
+    console.tron.log(navigation);
+    navigation.navigate('lchat');
+
+    dispatch(chatNav(true));
+  }
 
   return (
     <Container>
@@ -68,7 +77,7 @@ export default function Social({navigation}) {
           color={'#333'}
           size={32}
           name="chat"
-          onPress={() => navigation.navigate('Chat')}
+          onPress={() => handleSubmit()}
         />
       </Header>
       <Body>

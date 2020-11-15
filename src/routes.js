@@ -18,8 +18,31 @@ import Chat from './pages/Chat';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
-function ListChat({navigation}) {
+export function LSocial({navigation}) {
+  navigation.dispatch({
+    ...CommonActions.setParams({user: 'Wojtek'}),
+    source: Chat.key,
+  });
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        gestureEnabled: false,
+        headerTitleAlign: 'center',
+        headerTransparent: true,
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerLeftContainerStyle: {
+          marginLeft: 20,
+        },
+        headerTintColor: '#333',
+      }}>
+      <Stack.Screen name="Social" component={Social} />
+      <Stack.Screen name="lchat" component={ListChat} />
+    </Stack.Navigator>
+  );
+}
+export function ListChat({navigation}) {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -35,7 +58,7 @@ function ListChat({navigation}) {
         headerTintColor: '#333',
       }}>
       <Stack.Screen
-        name="SelectProvider"
+        name="chats"
         component={Main}
         options={{
           title: 'Menssages',
@@ -53,10 +76,11 @@ function ListChat({navigation}) {
   );
 }
 
-function LMensage({navigation}) {
+export function LMensage({navigation}) {
   return (
     <Stack.Navigator
       screenOptions={{
+        tabBarVisible: false,
         gestureEnabled: false,
         headerTitleAlign: 'center',
         headerTransparent: true,
@@ -86,18 +110,15 @@ function LMensage({navigation}) {
     </Stack.Navigator>
   );
 }
-export default function Routes({isSigned}) {
-  return (
-    <NavigationContainer>
-     { switch (key) {
-        case value:
-          
-          break;
-      
-        default:
-          break;
-      }}
-      {isSigned ? (
+export default function Routes({isSigned, props, state}) {
+  {
+    console.tron.log([props, state]);
+  }
+  var nav1;
+
+  switch (isSigned) {
+    case true:
+      nav1 = (
         <Tab.Navigator
           tabBarOptions={{
             resetOnBlur: true,
@@ -121,6 +142,7 @@ export default function Routes({isSigned}) {
               ),
             }}
           />
+          {}
           <Tab.Screen
             name="Chat"
             component={LMensage}
@@ -128,6 +150,7 @@ export default function Routes({isSigned}) {
               tabBarIcon: ({color}) => (
                 <Icon color={color} size={32} name="stacked-line-chart" />
               ),
+
               tabBarVisible: false,
             }}
           />
@@ -142,7 +165,7 @@ export default function Routes({isSigned}) {
           />
           <Tab.Screen
             name="Social"
-            component={Social}
+            component={LSocial}
             options={{
               tabBarIcon: ({color}) => (
                 <Icon color={color} size={32} name="groups" />
@@ -159,11 +182,20 @@ export default function Routes({isSigned}) {
             }}
           />
         </Tab.Navigator>
-      ) : (
+      );
+      break;
+    case false:
+      nav1 = (
         <Stack.Navigator headerMode="none">
           <Stack.Screen name="SignIn" component={Login} />
+          <Stack.Screen name="Profile" component={Main} />
         </Stack.Navigator>
-      )}
-    </NavigationContainer>
-  );
+      );
+      break;
+    case 2:
+      break;
+    default:
+      break;
+  }
+  return <NavigationContainer>{nav1}</NavigationContainer>;
 }
