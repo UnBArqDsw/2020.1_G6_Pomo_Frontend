@@ -4,9 +4,10 @@ import {Text} from 'react-native';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
+var global_time = 10; // valor vira do backend
 export default function Timer() {
   const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(10);
+  const [minutes, setMinutes] = useState(global_time);
   const [start, setStart] = useState(false);
   const [timer, setTimer] = useState(null);
   var time;
@@ -35,15 +36,16 @@ export default function Timer() {
         console.log('clearinterval');
       }
       setSeconds(aux_seconds);
-    }, 10);
+    }, 1000);
   }
   return (
     <Container>
       <CircleContainer>
         <AnimatedCircularProgress
           size={200}
+          rotation={0}
           width={8}
-          fill={((minutes * 60 + seconds) * 100) / 1500}
+          fill={((minutes * 60 + seconds) * 100) / (global_time * 60)}
           tintColor="#FF0000"
           backgroundColor="#b4b4b4">
           {() => (

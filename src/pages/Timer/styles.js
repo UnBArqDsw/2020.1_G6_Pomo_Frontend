@@ -15,15 +15,15 @@ export const Init = styled.Text`
 export const CircleContainer = styled.View`
   background: #fff;
   padding: 15px;
-  border-radius: 120;
+  border-radius: 120px;
   elevation: 90;
-  border-width: 1;
+  border-width: 1px;
   border-color: #ccc;
 `;
 
 export const MenButton = styled(RectButton)`
   border-radius: 75px;
-  border-width: 1px;
+  border-width: 4px;
   border-style: solid;
   height: 200px;
   width: 200px;
@@ -32,6 +32,6 @@ export const MenButton = styled(RectButton)`
 `;
 
 export const TimeText = styled.Text`
-  font-size: 40;
+  font-size: 49px;
   font-weight: bold;
 `;
