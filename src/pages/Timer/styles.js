@@ -9,16 +9,20 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const Init = styled.Text`
-  font-size: 20;
+  font-size: 25;
 `;
 
 export const MenButton = styled(RectButton)`
   border-radius: 75px;
   border-width: 1px;
   border-style: solid;
-  background-color: #ff0000;
   height: 150px;
   width: 150px;
   align-items: center;
   justify-content: center;
+`;
+
+export const TimeText = styled.Text`
+  font-size: 40;
+  font-weight: bold;
 `;
