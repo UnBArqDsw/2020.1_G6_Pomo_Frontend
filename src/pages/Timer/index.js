@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {Container, MenButton, TimeText} from './styles';
+import {Container, MenButton, TimeText, CircleContainer} from './styles';
 import {Text} from 'react-native';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export default function Timer() {
   const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(25);
+  const [minutes, setMinutes] = useState(10);
   const [start, setStart] = useState(false);
   const [timer, setTimer] = useState(null);
   var time;
@@ -18,6 +18,11 @@ export default function Timer() {
     let aux_seconds = seconds;
     let aux_minutes = minutes;
     time = setInterval(() => {
+      if (aux_minutes == 0 && aux_seconds == 0) {
+        setMinutes(25);
+        setSeconds(1);
+        clearInterval(time);
+      }
       if (aux_seconds == 0) {
         setSeconds(60);
         aux_seconds = 60;
@@ -30,26 +35,34 @@ export default function Timer() {
         console.log('clearinterval');
       }
       setSeconds(aux_seconds);
-    }, 1000);
+    }, 10);
   }
   return (
     <Container>
-      <AnimatedCircularProgress
-        size={200}
-        width={8}
-        fill={((minutes * 60 + seconds) * 100) / 1500}
-        tintColor="#FF0000"
-        backgroundColor="#000">
-        {() => (
-          <MenButton onPress={() => startStopButton()}>
-            <TimeText>
-              {seconds < 10
-                ? `${minutes} : 0${seconds}`
-                : `${minutes} : ${seconds}`}
-            </TimeText>
-          </MenButton>
-        )}
-      </AnimatedCircularProgress>
+      <CircleContainer>
+        <AnimatedCircularProgress
+          size={200}
+          width={8}
+          fill={((minutes * 60 + seconds) * 100) / 1500}
+          tintColor="#FF0000"
+          backgroundColor="#b4b4b4">
+          {() => (
+            <MenButton onPress={() => startStopButton()}>
+              <TimeText>
+                {minutes >= 10 && seconds < 10
+                  ? `${minutes} : 0${seconds}`
+                  : minutes < 10 && seconds < 10
+                  ? `0${minutes} : 0${seconds}`
+                  : minutes >= 10 && seconds >= 10
+                  ? `${minutes} : ${seconds}`
+                  : minutes < 10 && seconds >= 10
+                  ? `0${minutes} : ${seconds}`
+                  : null}
+              </TimeText>
+            </MenButton>
+          )}
+        </AnimatedCircularProgress>
+      </CircleContainer>
     </Container>
   );
 }

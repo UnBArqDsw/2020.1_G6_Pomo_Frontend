@@ -12,12 +12,21 @@ export const Init = styled.Text`
   font-size: 25;
 `;
 
+export const CircleContainer = styled.View`
+  background: #fff;
+  padding: 15px;
+  border-radius: 120;
+  elevation: 90;
+  border-width: 1;
+  border-color: #ccc;
+`;
+
 export const MenButton = styled(RectButton)`
   border-radius: 75px;
   border-width: 1px;
   border-style: solid;
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   align-items: center;
   justify-content: center;
 `;
