@@ -1,41 +1,47 @@
-import React, {useState} from 'react';
-import {Container, MenButton, TimeText, CircleContainer} from './styles';
+import React, {useState, useEffect} from 'react';
+import {
+  Container,
+  MenButton,
+  TimeText,
+  CircleContainer,
+  StopButton,
+} from './styles';
 import {Text} from 'react-native';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export default function Timer() {
   const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(10);
+  const [minutes, setMinutes] = useState(4);
   const [start, setStart] = useState(false);
-  const [timer, setTimer] = useState(null);
-  var time;
-  function startStopButton() {
-    console.log(start);
-    setStart(true);
-    console.log(start);
+  const [timer, setTimer] = useState(0);
+  let time;
+  let aux_seconds = seconds;
+  let aux_minutes = minutes;
 
-    let aux_seconds = seconds;
-    let aux_minutes = minutes;
-    time = setInterval(() => {
-      if (aux_minutes == 0 && aux_seconds == 0) {
-        setMinutes(25);
-        setSeconds(1);
-        clearInterval(time);
-      }
-      if (aux_seconds == 0) {
-        setSeconds(60);
-        aux_seconds = 60;
-        aux_minutes--;
-        setMinutes(aux_minutes);
-      }
-      aux_seconds = aux_seconds - 1;
-      if (start == true) {
-        clearInterval(time);
-        console.log('clearinterval');
-      }
-      setSeconds(aux_seconds);
-    }, 10);
+  function startStopButton(stop) {
+    setStart(stop);
+
+    if (stop) {
+      time = setInterval(() => {
+        if (aux_seconds == 0) {
+          if (aux_minutes == 0) {
+            clearInterval(timer);
+            return;
+          }
+          setSeconds(60);
+          aux_seconds = 60;
+          aux_minutes--;
+          setMinutes(aux_minutes);
+        }
+        aux_seconds = aux_seconds - 1;
+
+        setSeconds(aux_seconds);
+      }, 10);
+
+      setTimer(time);
+    } else {
+      clearInterval(timer);
+    }
   }
   return (
     <Container>
@@ -43,11 +49,11 @@ export default function Timer() {
         <AnimatedCircularProgress
           size={200}
           width={8}
-          fill={((minutes * 60 + seconds) * 100) / 1500}
+          fill={1}
           tintColor="#FF0000"
           backgroundColor="#b4b4b4">
           {() => (
-            <MenButton onPress={() => startStopButton()}>
+            <MenButton onPress={() => startStopButton(!start)}>
               <TimeText>
                 {minutes >= 10 && seconds < 10
                   ? `${minutes} : 0${seconds}`
@@ -63,6 +69,13 @@ export default function Timer() {
           )}
         </AnimatedCircularProgress>
       </CircleContainer>
+      <StopButton
+        onPress={() => {
+          setMinutes(25);
+          setSeconds(0);
+        }}>
+        <TimeText>{'resete'}</TimeText>
+      </StopButton>
     </Container>
   );
 }

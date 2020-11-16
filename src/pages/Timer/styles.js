@@ -30,6 +30,13 @@ export const MenButton = styled(RectButton)`
   align-items: center;
   justify-content: center;
 `;
+export const StopButton = styled(RectButton)`
+  border-style: solid;
+  height: 50;
+
+  align-items: center;
+  justify-content: center;
+`;
 
 export const TimeText = styled.Text`
   font-size: 40;
