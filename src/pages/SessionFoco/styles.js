@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  background-color: #fff;
+export const Container = styled.SafeAreaView`
   flex: 1;
-  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
 `;
 export const ItemContainer = styled.View`
   background-color: #7159c1;
@@ -36,4 +37,13 @@ export const ItemGrid = styled.View`
   flex: 1;
   padding: 10px;
   flex-direction: row;
+`;
+export const Title = styled.Text.attrs({
+  numberOfLines: 1,
+})`
+
+  font-size: 30px
+  font-weight: bold;
+  padding-bottom: 30px;
+  color: #333;
 `;
