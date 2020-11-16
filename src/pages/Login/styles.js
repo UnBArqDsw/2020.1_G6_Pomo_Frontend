@@ -13,7 +13,7 @@ export default StyleSheet.create({
     flex: 0.5,
     alignItems: 'center',
     justifyContent: 'center',
-    // backgroundColorgg: '#000',
+    // backgroundColor: '#000',
   },
   // logo: {
   //   width: windowWidth * .20,

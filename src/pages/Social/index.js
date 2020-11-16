@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+
 import {useDispatch} from 'react-redux';
 
 import {chatNav} from '../../store/modules/navigate/actions';
@@ -105,4 +106,5 @@ export default function Social({navigation}) {
       </Body>
     </Container>
   );
+
 }

@@ -15,8 +15,12 @@ import {
 import styles from './styles';
 import logo from '../../assets/logo.png';
 import Background from '../../components/Background';
+
 import {teste} from '../../store/modules/navigate/actions';
 import {useDispatch} from 'react-redux';
+
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function Login() {
   const windowWidth = Dimensions.get('window').width;
@@ -29,7 +33,8 @@ export default function Login() {
   const [offset] = useState(new Animated.ValueXY({x: 0, y: 80}));
   const [opacity] = useState(new Animated.Value(0));
   const [is_keyboard_open, setIsKeyboardOpen] = useState(false);
-
+  const navigation = useNavigation();
+  
   useEffect(() => {
     keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
@@ -99,6 +104,10 @@ export default function Login() {
         duration: 3000,
       }),
     ]).start();
+  }
+  function navigateTo(page) {
+    navigation.navigate(page);
+    // navigation.replace(page)
   }
   console.disableYellowBox = true;
   function handleSubmit() {
@@ -172,10 +181,10 @@ export default function Login() {
           </TouchableOpacity>
         </Animated.View>
         <View style={styles.bottom}>
-          <TouchableOpacity style={styles.btnRegister} onPress={() => {}}>
+          <TouchableOpacity style={styles.btnRegister} onPress={() => navigateTo('Register')}>
             <Text style={styles.btnRegisterText}>INSCREVER-SE</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.btnRecovery} onPress={() => {}}>
+          <TouchableOpacity style={styles.btnRecovery} onPress={() => navigateTo('Recovery')}>
             <Text style={styles.btnRecoveryText}>RECUPERAR SENHA</Text>
           </TouchableOpacity>
         </View>

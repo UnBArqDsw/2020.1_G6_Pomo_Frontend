@@ -13,7 +13,13 @@ import Main from './pages/Menssage';
 import Preferencias from './pages/Preferencias';
 import Social from './pages/Social';
 import Login from './pages/Login';
+
 import Chat from './pages/Chat';
+
+import Register from './pages/Register';
+import Recovery from './pages/Recovery';
+import Timer from './pages/Timer';
+
 //====================================
 
 const Stack = createStackNavigator();
@@ -75,6 +81,7 @@ export function ListChat({navigation}) {
 
 export function LMensage({navigation}) {
   return (
+
     <Stack.Navigator
       screenOptions={{
         tabBarVisible: false,
@@ -123,6 +130,10 @@ export default function Routes({isSigned}) {
   switch (isSigned) {
     case true:
       nav1 = (
+
+    <NavigationContainer>
+      {!isSigned ? (
+
         <Tab.Navigator
           tabBarOptions={{
             resetOnBlur: true,
@@ -159,8 +170,8 @@ export default function Routes({isSigned}) {
             }}
           />
           <Tab.Screen
-            name="Profile"
-            component={Main}
+            name="Timer"
+            component={Timer}
             options={{
               tabBarIcon: ({color}) => (
                 <Icon color={color} size={32} name="timer" />
@@ -193,7 +204,10 @@ export default function Routes({isSigned}) {
       nav1 = (
         <Stack.Navigator headerMode="none">
           <Stack.Screen name="SignIn" component={Login} />
-          <Stack.Screen name="Profile" component={Main} />
+
+          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="Recovery" component={Recovery} />
+
         </Stack.Navigator>
       );
       break;
