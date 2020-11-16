@@ -6,6 +6,7 @@ export const Container = styled.SafeAreaView`
   padding-right: 30px;
   padding-top: 20px;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const Init = styled.Text`
@@ -30,14 +31,23 @@ export const MenButton = styled(RectButton)`
   align-items: center;
   justify-content: center;
 `;
-export const StopButton = styled(RectButton)`
+export const ResetButton = styled(RectButton)`
+  align-self: stretch;
+  border-radius: 23px;
+  border-width: 1px;
   border-style: solid;
-  height: 50;
-
-  align-items: center;
+  margin-bottom: 20px;
+  background-color: #cccc;
   justify-content: center;
+  align-items: center;
+  height: 46px;
 `;
-
+export const ButtonText = styled.Text`
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+`;
 export const TimeText = styled.Text`
   font-size: 49px;
   font-weight: bold;

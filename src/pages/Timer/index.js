@@ -4,7 +4,8 @@ import {
   MenButton,
   TimeText,
   CircleContainer,
-  StopButton,
+  ResetButton,
+  ButtonText,
 } from './styles';
 
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
@@ -37,7 +38,7 @@ export default function Timer() {
         aux_seconds = aux_seconds - 1;
 
         setSeconds(aux_seconds);
-      }, 10);
+      }, 1000);
 
       setTimer(time);
     } else {
@@ -71,13 +72,13 @@ export default function Timer() {
           )}
         </AnimatedCircularProgress>
       </CircleContainer>
-      <StopButton
+      <ResetButton
         onPress={() => {
           setMinutes(25);
           setSeconds(0);
         }}>
-        <TimeText>{'resete'}</TimeText>
-      </StopButton>
+        <ButtonText>{'Resetar'}</ButtonText>
+      </ResetButton>
     </Container>
   );
 }
