@@ -81,7 +81,6 @@ export function ListChat({navigation}) {
 
 export function LMensage({navigation}) {
   return (
-
     <Stack.Navigator
       screenOptions={{
         tabBarVisible: false,
@@ -130,10 +129,6 @@ export default function Routes({isSigned}) {
   switch (isSigned) {
     case true:
       nav1 = (
-
-    <NavigationContainer>
-      {!isSigned ? (
-
         <Tab.Navigator
           tabBarOptions={{
             resetOnBlur: true,
@@ -207,7 +202,6 @@ export default function Routes({isSigned}) {
 
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="Recovery" component={Recovery} />
-
         </Stack.Navigator>
       );
       break;
