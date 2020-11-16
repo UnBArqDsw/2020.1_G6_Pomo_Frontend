@@ -15,11 +15,17 @@ import {
 import styles from './styles';
 import logo from '../../assets/logo.png';
 import Background from '../../components/Background';
+
+import {teste} from '../../store/modules/navigate/actions';
+import {useDispatch} from 'react-redux';
+
 import { useNavigation } from '@react-navigation/native';
+
 
 export default function Login() {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
+  const dispatch = useDispatch();
 
   const [logo_animated] = useState(
     new Animated.ValueXY({x: windowWidth * 0.3, y: windowWidth * 0.3}),
@@ -104,6 +110,10 @@ export default function Login() {
     // navigation.replace(page)
   }
   console.disableYellowBox = true;
+  function handleSubmit() {
+    dispatch(teste(true));
+  }
+
   return (
     <Background>
       <KeyboardAvoidingView behavior="height" style={styles.background}>
@@ -164,7 +174,9 @@ export default function Login() {
             onChangeText={() => {}}
           />
 
-          <TouchableOpacity style={styles.btnLogin} onPress={() => {}}>
+          <TouchableOpacity
+            style={styles.btnLogin}
+            onPress={() => handleSubmit()}>
             <Text style={styles.btnLoginText}>ENTRAR</Text>
           </TouchableOpacity>
         </Animated.View>
