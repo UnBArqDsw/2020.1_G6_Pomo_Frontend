@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   background-color: #fff;
   flex: 1;
+  padding: 10px;
 `;
 export const ItemContainer = styled.View`
   background-color: #7159c1;
@@ -12,7 +13,9 @@ export const ItemContainer = styled.View`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  border-radius: 50px;
+  border-radius: 25px;
+  height: 120px;
+  width: 180px;
 `;
 export const ItemTitle = styled.Text`
   font-size: 25px;
@@ -23,4 +26,14 @@ export const ItemTitle = styled.Text`
 export const ItemDescription = styled.Text`
   font-size: 18px;
   color: #fafafa;
+`;
+
+export const List = styled.FlatList`
+  font-size: 18px;
+  color: #fafafa;
+`;
+export const ItemGrid = styled.View`
+  flex: 1;
+  padding: 10px;
+  flex-direction: row;
 `;

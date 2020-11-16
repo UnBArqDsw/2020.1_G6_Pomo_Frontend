@@ -10,9 +10,16 @@ import {
   Animated,
   Dimensions,
   StatusBar,
+  FlatList,
 } from 'react-native';
 
-import {ItemContainer, ItemTitle, ItemDescription, Container} from './styles';
+import {
+  ItemContainer,
+  ItemTitle,
+  ItemDescription,
+  Container,
+  ItemGrid,
+} from './styles';
 import {Grid, Row, Col} from 'react-native-easy-grid';
 import Icon from 'react-native-vector-icons/Feather';
 import SearchBar from 'react-native-search-bar';
@@ -23,54 +30,27 @@ export default function SessionFoco() {
     <>
       <Container>
         <SearchBar placeholder="Buscar" />
-        <Grid>
-          <Col>
-            <Row>
+        <FlatList
+          style={{flex: 1}}
+          data={[1, 2, 3, 4, 5]}
+          keyExtractor={(item) => 1}
+          showsVerticalScrollIndicator={false}
+          renderItem={() => (
+            <ItemGrid>
               <ItemContainer>
                 <Icon name="book" size={30} color="#fff" />
                 <ItemTitle>Title</ItemTitle>
                 <ItemDescription>Description</ItemDescription>
               </ItemContainer>
-            </Row>
-            <Row>
+
               <ItemContainer>
                 <Icon name="book" size={30} color="#fff" />
                 <ItemTitle>Title</ItemTitle>
                 <ItemDescription>Description</ItemDescription>
               </ItemContainer>
-            </Row>
-            <Row>
-              <ItemContainer>
-                <Icon name="book" size={30} color="#fff" />
-                <ItemTitle>Title</ItemTitle>
-                <ItemDescription>Description</ItemDescription>
-              </ItemContainer>
-            </Row>
-          </Col>
-          <Col>
-            <Row>
-              <ItemContainer>
-                <Icon name="book" size={30} color="#fff" />
-                <ItemTitle>Title</ItemTitle>
-                <ItemDescription>Description</ItemDescription>
-              </ItemContainer>
-            </Row>
-            <Row>
-              <ItemContainer>
-                <Icon name="book" size={30} color="#fff" />
-                <ItemTitle>Title</ItemTitle>
-                <ItemDescription>Description</ItemDescription>
-              </ItemContainer>
-            </Row>
-            <Row>
-              <ItemContainer>
-                <Icon name="book" size={30} color="#fff" />
-                <ItemTitle>Title</ItemTitle>
-                <ItemDescription>Description</ItemDescription>
-              </ItemContainer>
-            </Row>
-          </Col>
-        </Grid>
+            </ItemGrid>
+          )}
+        />
       </Container>
     </>
   );
