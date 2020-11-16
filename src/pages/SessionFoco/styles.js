@@ -18,13 +18,13 @@ export const ItemContainer = styled.View`
   width: 180px;
 `;
 export const ItemTitle = styled.Text`
-  font-size: 25px;
+  font-size: 15px;
   font-weight: bold;
   color: #fafafa;
 `;
 
 export const ItemDescription = styled.Text`
-  font-size: 18px;
+  font-size: 12px;
   color: #fafafa;
 `;
 

@@ -18,14 +18,16 @@ Repositório para armazenar todo o código do frontend do projeto POMO.
 
 [Repositório da Documentação](https://github.com/UnBArqDsw/2020.1_G6_Pomo) do projeto.
 
+[Repositório da versão iOS nativa](https://github.com/UnBArqDsw/2020.1_G6_Pomo_iOS) do projeto.
+
 [Repositório do Backend](https://github.com/UnBArqDsw/2020.1_G6_Pomo_Backend) do projeto.
 
 ## Screenshots
 Adicione 3 ou mais screenshots do projeto em termos de interface e funcionamento.
 
 ## Instalação 
-**Linguagens**: xxxxxx<br>
-**Tecnologias**: xxxxxx<br>
+**Linguagens**: Javascript<br>
+**Tecnologias**: React Native<br>
 Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
 Insira um manual ou um script para auxiliar ainda mais.
 

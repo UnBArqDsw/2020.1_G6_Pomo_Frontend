@@ -14,12 +14,37 @@ import Preferencias from './pages/Preferencias';
 import Social from './pages/Social';
 import Login from './pages/Login';
 import SessionFoco from './pages/SessionFoco';
+import Chat from './pages/Chat';
+import Register from './pages/Register';
+import Recovery from './pages/Recovery';
+import Timer from './pages/Timer';
+
 //====================================
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+export function LSocial({navigation}) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        gestureEnabled: false,
+        headerTitleAlign: 'center',
+        headerTransparent: true,
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerLeftContainerStyle: {
+          marginLeft: 20,
+        },
+        headerTintColor: '#333',
+      }}>
+      <Stack.Screen name="Social" component={Social} />
+      <Stack.Screen name="lchat" component={ListChat} />
+    </Stack.Navigator>
+  );
+}
 
-function ListChat({navigation}) {
+export function ListChat({navigation}) {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -35,7 +60,7 @@ function ListChat({navigation}) {
         headerTintColor: '#333',
       }}>
       <Stack.Screen
-        name="SelectProvider"
+        name="chats"
         component={Main}
         options={{
           title: 'Menssages',
@@ -52,10 +77,57 @@ function ListChat({navigation}) {
     </Stack.Navigator>
   );
 }
-export default function Routes({isSigned}) {
+
+export function LMensage({navigation}) {
   return (
-    <NavigationContainer>
-      {!isSigned ? (
+    <Stack.Navigator
+      screenOptions={{
+        tabBarVisible: false,
+        gestureEnabled: false,
+        headerTitleAlign: 'center',
+        headerTransparent: true,
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerLeftContainerStyle: {
+          marginLeft: 20,
+        },
+        headerTintColor: '#333',
+      }}>
+      <Stack.Screen
+        name="Chat"
+        component={Chat}
+        options={{
+          title: 'Usuario',
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.dispatch(CommonActions.goBack());
+              }}>
+              <Icon name="chevron-left" size={20} color="#333" />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+export default function Routes({isSigned}) {
+  var nav1;
+  function getTabBarVisible(route) {
+    const routeName = route.state
+      ? route.state.routes[route.state.index].name
+      : route.params?.screen || 'Main';
+
+    if (routeName === 'lchat') {
+      return false;
+    }
+    return true;
+  }
+
+  switch (isSigned) {
+    case true:
+      nav1 = (
         <Tab.Navigator
           tabBarOptions={{
             resetOnBlur: true,
@@ -79,19 +151,21 @@ export default function Routes({isSigned}) {
               ),
             }}
           />
+          {}
           <Tab.Screen
-            name="ListChat"
-            component={ListChat}
+            name="Chat"
+            component={LMensage}
             options={{
               tabBarIcon: ({color}) => (
                 <Icon color={color} size={32} name="stacked-line-chart" />
               ),
+
               tabBarVisible: false,
             }}
           />
           <Tab.Screen
-            name="Profile"
-            component={Main}
+            name="Timer"
+            component={Timer}
             options={{
               tabBarIcon: ({color}) => (
                 <Icon color={color} size={32} name="timer" />
@@ -100,12 +174,13 @@ export default function Routes({isSigned}) {
           />
           <Tab.Screen
             name="Social"
-            component={Social}
-            options={{
+            component={LSocial}
+            options={({route}) => ({
+              tabBarVisible: getTabBarVisible(route),
               tabBarIcon: ({color}) => (
                 <Icon color={color} size={32} name="groups" />
               ),
-            }}
+            })}
           />
           <Tab.Screen
             name="Preferencias"
@@ -117,11 +192,21 @@ export default function Routes({isSigned}) {
             }}
           />
         </Tab.Navigator>
-      ) : (
+      );
+      break;
+    case false:
+      nav1 = (
         <Stack.Navigator headerMode="none">
           <Stack.Screen name="SignIn" component={Login} />
+          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="Recovery" component={Recovery} />
         </Stack.Navigator>
-      )}
-    </NavigationContainer>
-  );
+      );
+      break;
+    case 2:
+      break;
+    default:
+      break;
+  }
+  return <NavigationContainer>{nav1}</NavigationContainer>;
 }

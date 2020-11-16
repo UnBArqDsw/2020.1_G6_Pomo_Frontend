@@ -39,13 +39,13 @@ export default function SessionFoco() {
             <ItemGrid>
               <ItemContainer>
                 <Icon name="book" size={30} color="#fff" />
-                <ItemTitle>Title</ItemTitle>
+                <ItemTitle>Arquitetura e Desenho de Software</ItemTitle>
                 <ItemDescription>Description</ItemDescription>
               </ItemContainer>
 
               <ItemContainer>
                 <Icon name="book" size={30} color="#fff" />
-                <ItemTitle>Title</ItemTitle>
+                <ItemTitle>Testes de Software</ItemTitle>
                 <ItemDescription>Description</ItemDescription>
               </ItemContainer>
             </ItemGrid>
