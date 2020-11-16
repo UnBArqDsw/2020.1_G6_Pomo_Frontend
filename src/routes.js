@@ -55,7 +55,7 @@ function ListChat({navigation}) {
 export default function Routes({isSigned}) {
   return (
     <NavigationContainer>
-      {isSigned ? (
+      {!isSigned ? (
         <Tab.Navigator
           tabBarOptions={{
             resetOnBlur: true,
@@ -71,8 +71,8 @@ export default function Routes({isSigned}) {
           }}>
           {/* cada tabScreen e um icone da navbar. so mudar o nome do compoente */}
           <Tab.Screen
-            name="Main"
-            component={Main}
+            name="SessionFoco"
+            component={SessionFoco}
             options={{
               tabBarIcon: ({color}) => (
                 <Icon color={color} size={32} name="playlist-add-check" />
