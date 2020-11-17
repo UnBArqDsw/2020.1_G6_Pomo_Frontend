@@ -39,8 +39,8 @@ export function LSocial({navigation}) {
         },
         headerTintColor: '#333',
       }}>
-      <Stack.Screen name="Social" component={Social} />
-      <Stack.Screen name="lchat" component={ListChat} />
+      <Stack.Screen name="Social" options={{title: ''}} component={Social} />
+      <Stack.Screen name="lchat" options={{title: ''}} component={ListChat} />
     </Stack.Navigator>
   );
 }
