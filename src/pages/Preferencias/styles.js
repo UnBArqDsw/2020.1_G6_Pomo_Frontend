@@ -73,9 +73,24 @@ export const ModalButton = styled(RectButton)`
   border-radius: 23px;
   border-width: 1px;
   border-style: solid;
-  margin-top: 50px;
+  margin-top: 200px;
   background-color: #ccc;
   justify-content: center;
   align-items: center;
   height: 46px;
+`;
+
+export const Form = styled.View`
+  flex-direction: row;
+  margin-top: 20px;
+`;
+export const Input = styled.TextInput.attrs({
+  placeholderTextColor: '#999',
+})`
+  flex: 1;
+  height: 40px;
+  background: #eee;
+  border-radius: 20px;
+  padding: 0 15px;
+  border: 1px solid #999;
 `;

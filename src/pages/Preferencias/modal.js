@@ -6,16 +6,18 @@ import {
   TouchableOpacity,
   Animated,
   Dimensions,
+  Keyboard,
 } from 'react-native';
-import {ModalButton, TextButton} from './styles';
+import {ModalButton, TextButton, Form, Input} from './styles';
 const {height} = Dimensions.get('window');
 
-const Modal = ({show, close}) => {
+const Modal = ({show, close, user}) => {
   const [state, setState] = useState({
     opacity: new Animated.Value(0),
     container: new Animated.Value(height),
     modal: new Animated.Value(height),
   });
+  const [newName, setNewName] = useState({});
 
   const openModal = () => {
     Animated.sequence([
@@ -66,15 +68,18 @@ const Modal = ({show, close}) => {
           },
         ]}>
         <View style={styles.indicator} />
-
-        <Text style={styles.text}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae
-          massa odio. Quisque ante sem, tempor eget massa vel, mollis tincidunt
-          metus. Ut sed felis lectus. Nam semper molestie urna, quis ultricies
-          quam semper ut. Maecenas aliquet id urna a convallis. Class aptent
-          taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-        </Text>
-
+        <>
+          <Form>
+            <Input
+              autoCorrect={false}
+              placeholder={`${user}`}
+              returnKeyType="send"
+              // onSubmitEditing={this.handleAddUser}
+              value={newName}
+              onChangeText={(text) => setNewName(text)}
+            />
+          </Form>
+        </>
         <ModalButton onPress={close}>
           <TextButton>Close</TextButton>
         </ModalButton>
@@ -94,7 +99,7 @@ const styles = StyleSheet.create({
 
     height: 400,
 
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    backgroundColor: 'rgba(51, 51, 51, 0.8)',
 
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,

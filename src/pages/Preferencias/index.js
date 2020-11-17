@@ -10,9 +10,13 @@ import {
   Button,
   TextButton,
   ContainerModal,
+  Form,
+  Input,
 } from './styles';
+import {Keyboard} from 'react-native';
 export default function Preferencias() {
   const [modal, setModal] = useState(false);
+  const [test, setNewName] = useState('Andre Eduardo');
   return (
     <Container>
       <Title>{'Preferências'}</Title>
@@ -23,16 +27,15 @@ export default function Preferencias() {
               'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSk0-483Jw3zN4jn9qWI_HiLR5Hd4bfUs_Rhg&usqp=CAU',
           }}
         />
-        <Name>{'Andre Eduardo'}</Name>
+        <Name>{test}</Name>
       </Header>
       <Body>
-        {console.log('#cecc')}
         <Button onPress={() => setModal(true)}>
           <TextButton>{'Editar perfil'}</TextButton>
         </Button>
       </Body>
       <ContainerModal>
-        <Modal show={modal} close={() => setModal(false)} />
+        <Modal show={modal} close={() => setModal(false)} user={test} />
       </ContainerModal>
     </Container>
   );
