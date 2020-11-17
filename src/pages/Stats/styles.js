@@ -3,8 +3,8 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
   flex: 1;
 
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
   padding-top: 20px;
 `;
 
@@ -38,6 +38,8 @@ export const Title = styled.Text.attrs({
   font-weight: bold;
   padding-bottom: 15px;
   color: #333;
+  padding-left: 15px;
+  padding-right: 15px;
 `;
 
 export const TitleOfEachChart = styled.Text.attrs({

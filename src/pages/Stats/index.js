@@ -33,53 +33,45 @@ export default function Stats() {
               </TitleOfEachChart>
               <LineChart
                 data={{
-                  labels: [
-                    'January',
-                    'February',
-                    'March',
-                    'April',
-                    'May',
-                    'June',
-                  ],
+                  labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
                   datasets: [
                     {
                       data: [
-                        Math.random() * 100,
-                        Math.random() * 100,
-                        Math.random() * 100,
-                        Math.random() * 100,
-                        Math.random() * 100,
-                        Math.random() * 100,
+                        Math.random() * 10,
+                        Math.random() * 10,
+                        Math.random() * 10,
+                        Math.random() * 10,
+                        Math.random() * 10,
+                        Math.random() * 10,
                       ],
                     },
                   ],
                 }}
-                width={Dimensions.get('window').width / 1} // from react-native
-                height={180}
-                yAxisLabel="$"
-                yAxisSuffix="k"
+                width={Dimensions.get('window').width / 1.1} // from react-native
+                height={260}
+                yAxisSuffix="min"
                 yAxisInterval={1} // optional, defaults to 1
                 chartConfig={{
                   backgroundColor: '#000',
                   backgroundGradientFrom: '#e91e63',
                   backgroundGradientTo: '#9a0f3e',
-                  decimalPlaces: 2, // optional, defaults to 2dp
+                  decimalPlaces: 0, // optional, defaults to 2dp
                   color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                   labelColor: (opacity = 1) =>
                     `rgba(255, 255, 255, ${opacity})`,
                   style: {
-                    borderRadius: 20,
+                    // borderRadius: 20,
                   },
                   propsForDots: {
                     r: '6',
                     strokeWidth: '2',
-                    stroke: '#ffa726',
+                    stroke: '#000',
                   },
                 }}
                 bezier
                 style={{
                   marginVertical: 8,
-                  borderRadius: 50,
+                  borderRadius: 30,
                 }}
               />
             </Info>
