@@ -24,7 +24,7 @@ export default function Preferencias() {
         <Avatar
           source={{
             uri:
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSk0-483Jw3zN4jn9qWI_HiLR5Hd4bfUs_Rhg&usqp=CAU',
+              'https://raw.githubusercontent.com/UnBArqDsw/2020.1_G6_Pomo/master/docs/img/andre.png',
           }}
         />
         <Name>{test}</Name>

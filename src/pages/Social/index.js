@@ -21,46 +21,44 @@ import {
 export default function Social({navigation}) {
   const [users, setUsers] = useState([
     {
-      name: 'Andre',
-      avatar_url: 'https://avatars.dicebear.com/api/bottts/t.svg?w=50&h=50',
+      name: 'Arthur',
+      avatar_url:
+        'https://raw.githubusercontent.com/UnBArqDsw/2020.1_G6_Pomo/master/docs/img/arthur.jpg',
       LastMenssage: 'oi',
     },
     {
       name: 'Ximira',
-      avatar_url: 'https://avatars.dicebear.com/api/bottts/t.svg?w=50&h=50',
+      avatar_url:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSk0-483Jw3zN4jn9qWI_HiLR5Hd4bfUs_Rhg&usqp=CAU',
+
       LastMenssage: 'oi',
     },
     {
-      name: 'Souza',
-      avatar_url: 'https://avatars.dicebear.com/api/bottts/t.svg?w=50&h=50',
+      name: 'Andre Eduardo',
+      avatar_url:
+        'https://raw.githubusercontent.com/UnBArqDsw/2020.1_G6_Pomo/master/docs/img/andre.png',
       LastMenssage: 'oi',
     },
     {
-      name: 'Pelé',
-      avatar_url: 'https://avatars.dicebear.com/api/bottts/t.svg?w=50&h=50',
+      name: 'João',
+      avatar_url:
+        'https://raw.githubusercontent.com/UnBArqDsw/2020.1_G6_Pomo/master/docs/img/joao.png',
       LastMenssage: 'oi',
     },
     {
-      name: 'XXX',
-      avatar_url: 'https://avatars.dicebear.com/api/bottts/t.svg?w=50&h=50',
+      name: 'Marco',
+      avatar_url:
+        'https://raw.githubusercontent.com/UnBArqDsw/2020.1_G6_Pomo/master/docs/img/marco.png',
       LastMenssage: 'oi',
     },
     {
-      name: 'Naruto',
-      avatar_url: 'https://avatars.dicebear.com/api/bottts/t.svg?w=50&h=50',
-      LastMenssage: 'oi',
-    },
-    {
-      name: 'Sasuke',
-      avatar_url: 'https://avatars.dicebear.com/api/bottts/t.svg?w=50&h=50',
-      LastMenssage: 'oi',
-    },
-    {
-      name: 'Andre e',
-      avatar_url: 'https://avatars.dicebear.com/api/bottts/t.svg?w=50&h=50',
+      name: 'Thallys',
+      avatar_url:
+        'https://raw.githubusercontent.com/UnBArqDsw/2020.1_G6_Pomo/master/docs/img/thallys.png',
       LastMenssage: 'oi',
     },
   ]);
+
   const dispatch = useDispatch();
   function handleSubmit() {
     console.tron.log(navigation);
@@ -89,8 +87,7 @@ export default function Social({navigation}) {
             <LUser>
               <Avatar
                 source={{
-                  uri:
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSk0-483Jw3zN4jn9qWI_HiLR5Hd4bfUs_Rhg&usqp=CAU',
+                  uri: item.avatar_url,
                 }}
               />
               <Info>
@@ -106,5 +103,4 @@ export default function Social({navigation}) {
       </Body>
     </Container>
   );
-
 }
