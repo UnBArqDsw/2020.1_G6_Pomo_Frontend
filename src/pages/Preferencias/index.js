@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import Modal from './modal';
 import {
   Container,
   Title,
@@ -11,6 +11,7 @@ import {
   TextButton,
 } from './styles';
 export default function Preferencias() {
+  const [modal, setModal] = useState(false);
   return (
     <Container>
       <Title>{'Preferências'}</Title>
@@ -24,9 +25,11 @@ export default function Preferencias() {
         <Name>{'Andre Eduardo'}</Name>
       </Header>
       <Body>
-        <Button>
+        {console.log('#cecc')}
+        <Button onPress={() => setModal(true)}>
           <TextButton>{'Editar perfil'}</TextButton>
         </Button>
+        <Modal show={modal} close={() => setModal(false)} />
       </Body>
     </Container>
   );

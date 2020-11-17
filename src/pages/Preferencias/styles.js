@@ -50,7 +50,8 @@ export const Button = styled(RectButton)`
   border-radius: 23px;
   border-width: 1px;
   border-style: solid;
-  background-color: #cccc;
+
+  background-color: #ccc;
   justify-content: center;
   align-items: center;
   height: 46px;
