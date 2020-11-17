@@ -9,24 +9,47 @@ import {
   ItemGrid,
   Title,
   IconContainer,
+  Header,
+  MenButton,
 } from './styles';
 import Icon from 'react-native-vector-icons/Feather';
 import {SearchBar} from 'react-native-elements';
 export default function SessionFoco() {
   const [search, setSearch] = useState('');
   function vectorOfColors() {
-    let colors = ['#000', '#ccc', '#FF0000', '#00FF00', '#0000FF'];
+    let colors = [
+      '#2a2928',
+      '#b8b8b8',
+      '#ff4d4d',
+      '#91a06e',
+      '#3957f9',
+      '#d2e235',
+      '#912ae2',
+      '#ee6d00',
+      '#28beff',
+      '#ff01be',
+    ];
 
-    let random = Math.floor(Math.random() * 5);
+    let random = Math.floor(Math.random() * colors.length);
 
     return colors[random];
   }
   return (
     <>
       <Container>
-        <Title>{'Sessões'}</Title>
+        <Header>
+          <Title>{'Sessões'}</Title>
+          <MenButton>
+            <Icon
+              color={'#e91e63'}
+              size={35}
+              name="plus-circle"
+              onPress={() => {}}
+            />
+          </MenButton>
+        </Header>
         <SearchBar
-          placeholder="Type Here..."
+          placeholder="Buscar"
           platform="android"
           onChangeText={(value) => setSearch(value)}
           value={search}

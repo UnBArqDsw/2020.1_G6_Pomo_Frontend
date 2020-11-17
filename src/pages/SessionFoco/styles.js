@@ -1,10 +1,16 @@
 import styled from 'styled-components/native';
-
+import {RectButton} from 'react-native-gesture-handler';
 export const Container = styled.SafeAreaView`
   flex: 1;
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 20px;
+`;
+export const Header = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom-width: 1px;
+  border-color: #cccc;
 `;
 export const ItemContainer = styled.View`
   background-color:${(props) => `${props.background}`}};
@@ -44,4 +50,12 @@ export const Title = styled.Text.attrs({
 export const IconContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
+`;
+
+export const MenButton = styled(RectButton)`
+  border-radius: 5px;
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  justify-content: center;
 `;
