@@ -12,7 +12,7 @@ import {
   Title,
   LastMenssage,
 } from './styles';
-export default function Menssage() {
+export default function Menssage({navigation}) {
   const [find, setFind] = useState();
   const [chats, setChat] = useState([
     {
@@ -70,7 +70,7 @@ export default function Menssage() {
         data={chats}
         keyExtractor={(chat) => String(chat.name)}
         renderItem={({item}) => (
-          <LMenssage>
+          <LMenssage onPress={() => navigation.navigate('Chat')}>
             <Avatar
               source={{
                 uri: item.avatar_url,
