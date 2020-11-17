@@ -7,7 +7,7 @@ import {
   Animated,
   Dimensions,
 } from 'react-native';
-import {Button, TextButton} from './styles';
+import {ModalButton, TextButton} from './styles';
 const {height} = Dimensions.get('window');
 
 const Modal = ({show, close}) => {
@@ -73,19 +73,11 @@ const Modal = ({show, close}) => {
           metus. Ut sed felis lectus. Nam semper molestie urna, quis ultricies
           quam semper ut. Maecenas aliquet id urna a convallis. Class aptent
           taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-          himenaeos. Maecenas leo lectus, dictum vitae erat eget, luctus dapibus
-          sapien. Integer at hendrerit quam. Vivamus tempor, arcu non fringilla
-          laoreet, enim nibh porttitor enim, eget pellentesque eros nulla congue
-          neque. Suspendisse et lobortis enim, nec fermentum est. Aliquam
-          accumsan viverra vehicula. Proin tempus sagittis auctor. Vivamus quam
-          ligula, laoreet eget eros et, hendrerit iaculis risus. Nam a nulla in
-          purus fermentum rhoncus eu et erat. Aliquam tempus felis lorem, id
-          hendrerit tortor vestibulum ac.
         </Text>
 
-        <Button onPress={close}>
+        <ModalButton onPress={close}>
           <TextButton>Close</TextButton>
-        </Button>
+        </ModalButton>
       </Animated.View>
     </Animated.View>
   );
@@ -95,23 +87,22 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(250, 0, 0, 1)',
     position: 'absolute',
-    bottom: 350,
   },
   modal: {
-    bottom: 0,
-    position: 'absolute',
-    height: '50%',
-    backgroundColor: '#fff',
-    width: '100%',
+    bottom: 350,
+
+    height: 400,
+
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingLeft: 25,
     paddingRight: 25,
   },
   indicator: {
-    width: 50,
+    width: 60,
     height: 5,
     backgroundColor: '#ccc',
     borderRadius: 50,
@@ -129,7 +120,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#9b59b6',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 30,
+    marginTop: 60,
   },
 });
 

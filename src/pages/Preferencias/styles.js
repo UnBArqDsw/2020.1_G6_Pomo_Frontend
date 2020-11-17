@@ -62,3 +62,20 @@ export const TextButton = styled.Text`
   color: #333;
   text-transform: uppercase;
 `;
+
+export const ContainerModal = styled.View`
+  align-items: center;
+
+  justify-content: center;
+`;
+export const ModalButton = styled(RectButton)`
+  align-self: stretch;
+  border-radius: 23px;
+  border-width: 1px;
+  border-style: solid;
+  margin-top: 50px;
+  background-color: #ccc;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+`;

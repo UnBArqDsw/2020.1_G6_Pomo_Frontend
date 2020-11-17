@@ -9,6 +9,7 @@ import {
   Body,
   Button,
   TextButton,
+  ContainerModal,
 } from './styles';
 export default function Preferencias() {
   const [modal, setModal] = useState(false);
@@ -29,8 +30,10 @@ export default function Preferencias() {
         <Button onPress={() => setModal(true)}>
           <TextButton>{'Editar perfil'}</TextButton>
         </Button>
-        <Modal show={modal} close={() => setModal(false)} />
       </Body>
+      <ContainerModal>
+        <Modal show={modal} close={() => setModal(false)} />
+      </ContainerModal>
     </Container>
   );
 }
