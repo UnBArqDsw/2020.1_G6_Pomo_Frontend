@@ -9,17 +9,15 @@ export const Container = styled.SafeAreaView`
 export const ItemContainer = styled.View`
   background-color: #7159c1;
   margin: 5px;
-  padding: 15px;
+  padding: 12px;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
   border-radius: 25px;
   height: 120px;
   width: 180px;
 `;
 export const ItemTitle = styled.Text`
-  font-size: 15px;
+  font-size: 13px;
   font-weight: bold;
   color: #fafafa;
 `;
@@ -29,13 +27,8 @@ export const ItemDescription = styled.Text`
   color: #fafafa;
 `;
 
-export const List = styled.FlatList`
-  font-size: 18px;
-  color: #fafafa;
-`;
 export const ItemGrid = styled.View`
   flex: 1;
-  padding: 10px;
   flex-direction: row;
 `;
 export const Title = styled.Text.attrs({
@@ -46,4 +39,9 @@ export const Title = styled.Text.attrs({
   font-weight: bold;
   padding-bottom: 30px;
   color: #333;
+`;
+
+export const IconContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
 `;
