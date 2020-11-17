@@ -13,9 +13,8 @@ import Main from './pages/Menssage';
 import Preferencias from './pages/Preferencias';
 import Social from './pages/Social';
 import Login from './pages/Login';
-
+import Stats from './pages/Stats';
 import Chat from './pages/Chat';
-
 import Register from './pages/Register';
 import Recovery from './pages/Recovery';
 import Timer from './pages/Timer';
@@ -154,14 +153,12 @@ export default function Routes({isSigned}) {
           />
           {}
           <Tab.Screen
-            name="Chat"
-            component={LMensage}
+            name="Stats"
+            component={Stats}
             options={{
               tabBarIcon: ({color}) => (
                 <Icon color={color} size={32} name="stacked-line-chart" />
               ),
-
-              tabBarVisible: false,
             }}
           />
           <Tab.Screen
