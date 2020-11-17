@@ -11,9 +11,9 @@ import {
   IconContainer,
 } from './styles';
 import Icon from 'react-native-vector-icons/Feather';
-import SearchBar from 'react-native-search-bar';
-
+import {SearchBar} from 'react-native-elements';
 export default function SessionFoco() {
+  const [search, setSearch] = useState('');
   function vectorOfColors() {
     let colors = ['#000', '#ccc', '#FF0000', '#00FF00', '#0000FF'];
 
@@ -26,10 +26,18 @@ export default function SessionFoco() {
       <Container>
         <Title>{'Sessões'}</Title>
         <SearchBar
-          placeholder="Buscar"
-          placeholderTextColor="#000"
-          color="#000"
+          placeholder="Type Here..."
+          platform="android"
+          onChangeText={(value) => setSearch(value)}
+          value={search}
+          containerStyle={{
+            borderRadius: 100,
+            height: 50,
+            paddingTop: -10,
+            marginBottom: 10,
+          }}
         />
+
         <FlatList
           data={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
           keyExtractor={(item) => 1}
