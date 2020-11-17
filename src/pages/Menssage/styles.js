@@ -1,4 +1,6 @@
 import styled from 'styled-components/native';
+import {RectButton} from 'react-native-gesture-handler';
+
 export const Container = styled.SafeAreaView`
   flex: 1;
   padding-left: 30px;
@@ -23,11 +25,12 @@ export const Chats = styled.FlatList.attrs({
 })`
   margin-top: 20px;
 `;
-export const LMenssage = styled.View`
+export const LMenssage = styled(RectButton)`
   background: #e1e1e1;
 
   padding: 20px 24px;
-  border: 1px solid #999;
+  margin-bottom: 4px;
+
   flex-direction: row;
   align-items: center;
 `;

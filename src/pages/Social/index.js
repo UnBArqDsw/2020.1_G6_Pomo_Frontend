@@ -61,7 +61,6 @@ export default function Social({navigation}) {
 
   const dispatch = useDispatch();
   function handleSubmit() {
-    console.tron.log(navigation);
     navigation.navigate('lchat');
 
     dispatch(chatNav(true));
