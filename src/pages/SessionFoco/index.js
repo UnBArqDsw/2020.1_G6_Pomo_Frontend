@@ -14,6 +14,13 @@ import Icon from 'react-native-vector-icons/Feather';
 import SearchBar from 'react-native-search-bar';
 
 export default function SessionFoco() {
+  function vectorOfColors() {
+    let colors = ['#000', '#ccc', '#FF0000', '#00FF00', '#0000FF'];
+
+    let random = Math.floor(Math.random() * 5);
+
+    return colors[random];
+  }
   return (
     <>
       <Container>
@@ -30,7 +37,7 @@ export default function SessionFoco() {
           numColumns={2}
           renderItem={() => (
             <ItemGrid>
-              <ItemContainer>
+              <ItemContainer background={vectorOfColors()}>
                 <IconContainer>
                   <Icon name="book" size={25} color="#fff" />
                   <Icon name="more-horizontal" size={25} color="#fff" />

@@ -1,12 +1,5 @@
 import styled from 'styled-components/native';
 
-function vectorOfColors() {
-  let colors = ['#000', '#FFF', '#FF0000', '#00FF00', '#0000FF'];
-
-  let random = Math.floor(Math.random() * 5);
-
-  return colors[random];
-}
 export const Container = styled.SafeAreaView`
   flex: 1;
   padding-left: 30px;
@@ -14,7 +7,7 @@ export const Container = styled.SafeAreaView`
   padding-top: 20px;
 `;
 export const ItemContainer = styled.View`
-  background-color: ${vectorOfColors()};
+  background-color:${(props) => `${props.background}`}};
   margin: 5px;
   padding: 12px;
   flex: 1;
