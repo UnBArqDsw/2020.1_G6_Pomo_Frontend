@@ -21,13 +21,13 @@ export default function SessionFoco() {
         <SearchBar
           placeholder="Buscar"
           placeholderTextColor="#000"
-          inputStyle={{color: '#000'}}
+          color="#000"
         />
         <FlatList
-          style={{marginTop: 15}}
-          data={[1, 2, 3, 4, 5]}
+          data={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
           keyExtractor={(item) => 1}
           showsVerticalScrollIndicator={false}
+          numColumns={2}
           renderItem={() => (
             <ItemGrid>
               <ItemContainer>
@@ -36,16 +36,7 @@ export default function SessionFoco() {
                   <Icon name="more-horizontal" size={25} color="#fff" />
                 </IconContainer>
                 <ItemTitle>Arquitetura e Desenho de Software</ItemTitle>
-                <ItemDescription>Description</ItemDescription>
-              </ItemContainer>
-
-              <ItemContainer>
-                <IconContainer>
-                  <Icon name="book" size={25} color="#fff" />
-                  <Icon name="more-horizontal" size={25} color="#fff" />
-                </IconContainer>
-                <ItemTitle>Testes de Software</ItemTitle>
-                <ItemDescription>Description</ItemDescription>
+                <ItemDescription>Descrição</ItemDescription>
               </ItemContainer>
             </ItemGrid>
           )}
