@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import {RectButton} from 'react-native-gesture-handler';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -8,7 +7,6 @@ export const Container = styled.SafeAreaView`
   padding-right: 30px;
   padding-top: 20px;
 `;
-
 
 export const Graphics = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
@@ -31,4 +29,21 @@ export const LTitle = styled.View`
 export const Info = styled.View`
   flex: 1;
   align-items: center;
+`;
+
+export const Title = styled.Text.attrs({
+  numberOfLines: 1,
+})`
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 15px;
+  color: #333;
+`;
+
+export const TitleOfEachChart = styled.Text.attrs({
+  numberOfLines: 1,
+})`
+  font-size: 20px;
+  font-weight: bold;
+  color: #828282;
 `;
