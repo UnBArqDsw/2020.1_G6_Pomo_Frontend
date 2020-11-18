@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, Dimensions} from 'react-native';
+import {FlatList, Dimensions, TouchableOpacity} from 'react-native';
 
 import {
   ItemContainer,
@@ -11,14 +11,17 @@ import {
   IconContainer,
   Header,
   MenButton,
+  MoreButton,
 } from './styles';
 import Icon from 'react-native-vector-icons/Feather';
 import {SearchBar} from 'react-native-elements';
 import NewTask from '../../components/NewTask';
+import EditTask from '../../components/EditTask';
 
 export default function SessionFoco() {
   const [search, setSearch] = useState('');
   const [isVisibleNewTask, setIsVisibleNewTask] = useState(false);
+  const [isVisibleEditTask, setIsVisibleEditTask] = useState(false);
 
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
@@ -71,6 +74,11 @@ export default function SessionFoco() {
           onCancel={() => setIsVisibleNewTask(false)}
         />
 
+        <EditTask
+          isVisible={isVisibleEditTask}
+          onCancel={() => setIsVisibleEditTask(false)}
+        />
+
         <FlatList
           data={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
           keyExtractor={(item) => 1}
@@ -81,11 +89,13 @@ export default function SessionFoco() {
               <ItemContainer background={vectorOfColors()}>
                 <IconContainer>
                   <Icon name="book" size={windowHeight / 30} color="#fff" />
-                  <Icon
-                    name="more-horizontal"
-                    size={windowHeight / 30}
-                    color="#fff"
-                  />
+                  <MoreButton onPress={() => setIsVisibleEditTask(true)}>
+                    <Icon
+                      name="more-horizontal"
+                      size={windowHeight / 30}
+                      color="#fff"
+                    />
+                  </MoreButton>
                 </IconContainer>
                 <ItemTitle>Arquitetura e Desenho de Software</ItemTitle>
                 <ItemDescription>DescriçãoDescrição ...</ItemDescription>

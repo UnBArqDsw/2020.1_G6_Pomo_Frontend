@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {RectButton} from 'react-native-gesture-handler';
+import {RectButton, TouchableOpacity} from 'react-native-gesture-handler';
 import {Dimensions} from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
@@ -55,6 +55,7 @@ export const Title = styled.Text.attrs({
 export const IconContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  padding-right: 10px;
 `;
 
 export const MenButton = styled(RectButton)`
@@ -63,4 +64,8 @@ export const MenButton = styled(RectButton)`
   width: 40px;
   align-items: center;
   justify-content: center;
+`;
+
+export const MoreButton = styled(TouchableOpacity)`
+  align-items: center;
 `;
