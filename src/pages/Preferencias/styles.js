@@ -50,7 +50,8 @@ export const Button = styled(RectButton)`
   border-radius: 23px;
   border-width: 1px;
   border-style: solid;
-  background-color: #cccc;
+
+  background-color: #ccc;
   justify-content: center;
   align-items: center;
   height: 46px;
@@ -60,4 +61,36 @@ export const TextButton = styled.Text`
   font-weight: bold;
   color: #333;
   text-transform: uppercase;
+`;
+
+export const ContainerModal = styled.View`
+  align-items: center;
+
+  justify-content: center;
+`;
+export const ModalButton = styled(RectButton)`
+  align-self: stretch;
+  border-radius: 23px;
+  border-width: 1px;
+  border-style: solid;
+  margin-top: 200px;
+  background-color: #ccc;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+`;
+
+export const Form = styled.View`
+  flex-direction: row;
+  margin-top: 20px;
+`;
+export const Input = styled.TextInput.attrs({
+  placeholderTextColor: '#999',
+})`
+  flex: 1;
+  height: 40px;
+  background: #eee;
+  border-radius: 20px;
+  padding: 0 15px;
+  border: 1px solid #999;
 `;
