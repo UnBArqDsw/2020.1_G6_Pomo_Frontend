@@ -23,16 +23,22 @@ export default StyleSheet.create({
   },
   formContainer: {
     flex: 1,
-    // backgroundColor: '#0000FF',
+    backgroundColor: '#0000FF',
     padding: 5,
+    marginTop: 15,
   },
   input: {
     backgroundColor: '#ccc',
     borderWidth: 1,
     borderRadius: 5,
     width: '100%',
-    height: '12%',
+    height: '25%',
     color: '#FFF',
     marginBottom: 10,
+  },
+  colorAndIconContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#000',
   },
 });
