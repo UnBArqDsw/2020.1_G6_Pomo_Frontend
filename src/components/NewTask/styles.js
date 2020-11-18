@@ -23,7 +23,7 @@ export default StyleSheet.create({
   },
   formContainer: {
     flex: 1,
-    backgroundColor: '#0000FF',
+    // backgroundColor: '#0000FF',
     padding: 5,
     marginTop: 15,
   },
@@ -39,6 +39,34 @@ export default StyleSheet.create({
   colorAndIconContainer: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: '#000',
+    // backgroundColor: '#000',
+    alignItems: 'center',
+    // justifyContent: 'space-evenly',
+  },
+  colorContainer: {
+    flex: 1,
+    // backgroundColor: '#000',
+    alignItems: 'center',
+    // justifyContent: 'center',
+  },
+  iconContainer: {
+    flex: 1,
+    height: '100%',
+    // alignItems: 'center',
+    // borderWidth: 2,
+    // backgroundColor: '#000',
+  },
+  iconContainerHeader: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  iconContainerPicker: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  textPickers: {
+    fontSize: windowHeight / 45,
+    fontWeight: 'bold',
+    color: '#e91e63',
   },
 });

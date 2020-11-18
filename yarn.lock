@@ -6163,6 +6163,11 @@ react-native-typing-animation@^0.1.7:
   resolved "https://registry.yarnpkg.com/react-native-typing-animation/-/react-native-typing-animation-0.1.7.tgz#8f2cf08d9400ae543a110292eb7d71523dda5528"
   integrity sha512-4H3rF9M+I2yAZpYJcY0Mb29TXkn98QK12rrKSY6LZj1BQD9NNmRZuNXzwX4XHapsIz+N/J8M3p27FOQPbfzqeg==
 
+react-native-vector-icon-picker@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icon-picker/-/react-native-vector-icon-picker-0.1.0.tgz#bde875042622318f04be2c1bceb9a8873b243e44"
+  integrity sha512-otiYFOG7gOVBPs09mefzJeGEwf57z+WVNDT0c5ADNjODyTaqv0f9B1cvhzI3Zx1CoQjuOu5m85U1qdSmqW/Xmw==
+
 react-native-vector-icons@^7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-7.1.0.tgz#145487d617b2a81d395d2cf64e6e065fcab3a454"
