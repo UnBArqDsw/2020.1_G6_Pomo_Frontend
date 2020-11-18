@@ -19,8 +19,7 @@ import Background from '../../components/Background';
 import {teste} from '../../store/modules/navigate/actions';
 import {useDispatch} from 'react-redux';
 
-import { useNavigation } from '@react-navigation/native';
-
+import {useNavigation} from '@react-navigation/native';
 
 export default function Login() {
   const windowWidth = Dimensions.get('window').width;
@@ -34,7 +33,7 @@ export default function Login() {
   const [opacity] = useState(new Animated.Value(0));
   const [is_keyboard_open, setIsKeyboardOpen] = useState(false);
   const navigation = useNavigation();
-  
+
   useEffect(() => {
     keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
@@ -181,10 +180,14 @@ export default function Login() {
           </TouchableOpacity>
         </Animated.View>
         <View style={styles.bottom}>
-          <TouchableOpacity style={styles.btnRegister} onPress={() => navigateTo('Register')}>
+          <TouchableOpacity
+            style={styles.btnRegister}
+            onPress={() => navigateTo('Register')}>
             <Text style={styles.btnRegisterText}>INSCREVER-SE</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.btnRecovery} onPress={() => navigateTo('Recovery')}>
+          <TouchableOpacity
+            style={styles.btnRecovery}
+            onPress={() => navigateTo('Recovery')}>
             <Text style={styles.btnRecoveryText}>RECUPERAR SENHA</Text>
           </TouchableOpacity>
         </View>

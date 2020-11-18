@@ -14,8 +14,11 @@ import {
 } from './styles';
 import Icon from 'react-native-vector-icons/Feather';
 import {SearchBar} from 'react-native-elements';
+import NewTask from '../../components/NewTask';
+
 export default function SessionFoco() {
   const [search, setSearch] = useState('');
+  const [isVisibleNewTask, setIsVisibleNewTask] = useState(false);
   function vectorOfColors() {
     let colors = [
       '#2a2928',
@@ -38,8 +41,8 @@ export default function SessionFoco() {
     <>
       <Container>
         <Header>
-          <Title>{'Sessões'}</Title>
-          <MenButton>
+          <Title>{'Sessões de Foco'}</Title>
+          <MenButton onPress={() => setIsVisibleNewTask(true)}>
             <Icon
               color={'#e91e63'}
               size={35}
@@ -59,6 +62,10 @@ export default function SessionFoco() {
             paddingTop: -10,
             marginBottom: 10,
           }}
+        />
+        <NewTask
+          isVisible={isVisibleNewTask}
+          onCancel={() => setIsVisibleNewTask(false)}
         />
 
         <FlatList
