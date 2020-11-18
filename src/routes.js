@@ -38,8 +38,8 @@ export function LSocial({navigation}) {
         },
         headerTintColor: '#333',
       }}>
-      <Stack.Screen name="Social" component={Social} />
-      <Stack.Screen name="lchat" component={ListChat} />
+      <Stack.Screen name="Social" options={{title: ''}} component={Social} />
+      <Stack.Screen name="lchat" options={{title: ''}} component={ListChat} />
     </Stack.Navigator>
   );
 }
@@ -64,16 +64,17 @@ export function ListChat({navigation}) {
         component={Main}
         options={{
           title: 'Menssages',
-          headerLeft: () => (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.dispatch(CommonActions.goBack());
-              }}>
-              <Icon name="chevron-left" size={20} color="#333" />
-            </TouchableOpacity>
-          ),
+          // headerLeft: () => (
+          //   <TouchableOpacity
+          //     onPress={() => {
+          //       // navigation.dispatch(CommonActions.goBack());
+          //     }}>
+          //     <Icon name="chevron-left" size={20} color="#333" />
+          //   </TouchableOpacity>
+          // ),
         }}
       />
+      <Stack.Screen name="Chat" options={{title: ''}} component={LMensage} />
     </Stack.Navigator>
   );
 }
@@ -99,14 +100,14 @@ export function LMensage({navigation}) {
         component={Chat}
         options={{
           title: 'Usuario',
-          headerLeft: () => (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.dispatch(CommonActions.goBack());
-              }}>
-              <Icon name="chevron-left" size={20} color="#333" />
-            </TouchableOpacity>
-          ),
+          // headerLeft: () => (
+          //   <TouchableOpacity
+          //     onPress={() => {
+          //       navigation.dispatch(CommonActions.goBack());
+          //     }}>
+          //     <Icon name="chevron-left" size={20} color="#333" />
+          //   </TouchableOpacity>
+          // ),
         }}
       />
     </Stack.Navigator>
