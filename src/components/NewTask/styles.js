@@ -9,6 +9,7 @@ export default StyleSheet.create({
     padding: 10,
   },
   header: {
+    zIndex: 1,
     flex: 0.1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -23,5 +24,15 @@ export default StyleSheet.create({
   formContainer: {
     flex: 1,
     // backgroundColor: '#0000FF',
+    padding: 5,
+  },
+  input: {
+    backgroundColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 5,
+    width: '100%',
+    height: '12%',
+    color: '#FFF',
+    marginBottom: 10,
   },
 });
