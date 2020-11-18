@@ -22,7 +22,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   formContainer: {
-    flex: 1,
+    flex: 0.3,
     // backgroundColor: '#0000FF',
     padding: 5,
     marginTop: 15,
@@ -32,21 +32,23 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     width: '100%',
-    height: '25%',
+    height: '40%',
     color: '#FFF',
     marginBottom: 10,
   },
   colorAndIconContainer: {
-    flex: 1,
+    flex: 0.4,
     flexDirection: 'row',
-    // backgroundColor: '#000',
+    backgroundColor: '#ccc',
     alignItems: 'center',
     // justifyContent: 'space-evenly',
+    padding: 10,
+    borderRadius: 20,
   },
   colorContainer: {
     flex: 1,
     // backgroundColor: '#000',
-    alignItems: 'center',
+    // alignItems: 'center',
     // justifyContent: 'center',
   },
   iconContainer: {
@@ -56,9 +58,17 @@ export default StyleSheet.create({
     // borderWidth: 2,
     // backgroundColor: '#000',
   },
+  colorContainerHeader: {
+    flex: 0.1,
+    alignItems: 'center',
+    // backgroundColor: '#000',
+  },
   iconContainerHeader: {
     flex: 1,
     alignItems: 'center',
+  },
+  colorContainerPicker: {
+    flex: 1,
   },
   iconContainerPicker: {
     flex: 1,
@@ -67,6 +77,6 @@ export default StyleSheet.create({
   textPickers: {
     fontSize: windowHeight / 45,
     fontWeight: 'bold',
-    color: '#e91e63',
+    color: '#000',
   },
 });

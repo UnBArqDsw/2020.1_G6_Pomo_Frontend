@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   TextInput,
   KeyboardAvoidingView,
+  Keyboard,
+  Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import IconPickedFromUser from 'react-native-vector-icons/AntDesign';
@@ -14,6 +16,28 @@ import {ColorPicker} from 'react-native-color-picker';
 import IconPicker from 'react-native-vector-icon-picker';
 
 export default function NewTask({isVisible, onCancel}) {
+  const windowHeight = Dimensions.get('window').height;
+  const [is_keyboard_open, setIsKeyboardOpen] = useState(false);
+  const [icon, setIcon] = useState('star');
+  useEffect(() => {
+    keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      keyboardDidShow,
+    );
+    keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      keyboardDidHide,
+    );
+    console.log(is_keyboard_open);
+  });
+
+  function keyboardDidShow() {
+    setIsKeyboardOpen(true);
+  }
+
+  function keyboardDidHide() {
+    setIsKeyboardOpen(false);
+  }
   return (
     <Modal
       animationType="slide"
@@ -48,43 +72,54 @@ export default function NewTask({isVisible, onCancel}) {
             onChangeText={() => {}}
           />
         </View>
-        <View style={styles.colorAndIconContainer}>
-          <View style={styles.colorContainer}>
-            <Text style={styles.textPickers}>Escolha uma cor</Text>
-            <ColorPicker
-              onColorChange={(color) =>
-                console.log(`Color selected: ${color.h}`)
-              }
-              style={{flex: 1}}
-              hideSliders={true}
-            />
-          </View>
-          <View style={styles.iconContainer}>
-            <View style={styles.iconContainerHeader}>
-              <Text style={styles.textPickers}>Escolha um ícone</Text>
+        {!is_keyboard_open ? (
+          <View style={styles.colorAndIconContainer}>
+            <View style={styles.colorContainer}>
+              <View style={styles.colorContainerHeader}>
+                <Text style={styles.textPickers}>Escolha uma cor</Text>
+              </View>
+              <View style={styles.colorContainerPicker}>
+                <ColorPicker
+                  onColorChange={(color) =>
+                    console.log(`Color selected: ${color.h}`)
+                  }
+                  style={{flex: 1}}
+                  hideSliders={false}
+                />
+              </View>
             </View>
-            <View style={styles.iconContainerPicker}>
-              <IconPicker
-                icons={[
-                  {
-                    family: 'AntDesign',
-                    icons: [
-                      'fork',
-                      'lock',
-                      'unlock',
-                      'laptop',
-                      'star',
-                      'heart',
-                      'team',
-                      'calculator',
-                    ],
-                  },
-                ]}
-                onSelect={(icon) => console.log(icon)}
-              />
+            <View style={styles.iconContainer}>
+              <View style={styles.iconContainerHeader}>
+                <Text style={styles.textPickers}>Escolha um ícone</Text>
+                <View style={{marginTop: windowHeight / 20}}>
+                  <IconPickedFromUser name={icon} size={windowHeight / 20} />
+                </View>
+              </View>
+              <View style={styles.iconContainerPicker}>
+                <IconPicker
+                  icons={[
+                    {
+                      family: 'AntDesign',
+                      icons: [
+                        'fork',
+                        'lock',
+                        'unlock',
+                        'laptop',
+                        'star',
+                        'heart',
+                        'team',
+                        'calculator',
+                      ],
+                    },
+                  ]}
+                  onSelect={(icon) => setIcon(icon.icon)}
+                />
+              </View>
             </View>
           </View>
-        </View>
+        ) : (
+          console.log('teclado aberto')
+        )}
       </KeyboardAvoidingView>
     </Modal>
   );
