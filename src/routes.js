@@ -13,6 +13,7 @@ import Main from './pages/Menssage';
 import Preferencias from './pages/Preferencias';
 import Social from './pages/Social';
 import Login from './pages/Login';
+import SessionFoco from './pages/SessionFoco';
 import Stats from './pages/Stats';
 import Chat from './pages/Chat';
 import Register from './pages/Register';
@@ -144,8 +145,8 @@ export default function Routes({isSigned}) {
           }}>
           {/* cada tabScreen e um icone da navbar. so mudar o nome do compoente */}
           <Tab.Screen
-            name="Main"
-            component={Main}
+            name="SessionFoco"
+            component={SessionFoco}
             options={{
               tabBarIcon: ({color}) => (
                 <Icon color={color} size={32} name="playlist-add-check" />
@@ -197,7 +198,6 @@ export default function Routes({isSigned}) {
       nav1 = (
         <Stack.Navigator headerMode="none">
           <Stack.Screen name="SignIn" component={Login} />
-
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="Recovery" component={Recovery} />
         </Stack.Navigator>
