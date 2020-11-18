@@ -17,6 +17,7 @@ import IconPicker from 'react-native-vector-icon-picker';
 
 export default function NewTask({isVisible, onCancel}) {
   const windowHeight = Dimensions.get('window').height;
+  const windowWidth = Dimensions.get('window').width;
   const [is_keyboard_open, setIsKeyboardOpen] = useState(false);
   const [icon, setIcon] = useState('star');
   useEffect(() => {
@@ -47,11 +48,11 @@ export default function NewTask({isVisible, onCancel}) {
       <KeyboardAvoidingView style={styles.background} behavior="height">
         <View style={styles.header}>
           <TouchableOpacity onPress={onCancel}>
-            <Icon color={'#e91e63'} size={30} name="x" />
+            <Icon color={'#e91e63'} size={windowHeight / 20} name="x" />
           </TouchableOpacity>
           <Text style={styles.headerText}>Criar sessão</Text>
           <TouchableOpacity>
-            <Icon color={'#e91e63'} size={30} name="save" />
+            <Icon color={'#e91e63'} size={windowHeight / 20} name="save" />
           </TouchableOpacity>
         </View>
         <View style={styles.formContainer}>
@@ -92,7 +93,11 @@ export default function NewTask({isVisible, onCancel}) {
               <View style={styles.iconContainerHeader}>
                 <Text style={styles.textPickers}>Escolha um ícone</Text>
                 <View style={{marginTop: windowHeight / 20}}>
-                  <IconPickedFromUser name={icon} size={windowHeight / 20} />
+                  <IconPickedFromUser
+                    name={icon}
+                    size={windowHeight / 20}
+                    color="#FFF"
+                  />
                 </View>
               </View>
               <View style={styles.iconContainerPicker}>

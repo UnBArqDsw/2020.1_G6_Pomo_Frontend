@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, Dimensions} from 'react-native';
 
 import {
   ItemContainer,
@@ -19,6 +19,9 @@ import NewTask from '../../components/NewTask';
 export default function SessionFoco() {
   const [search, setSearch] = useState('');
   const [isVisibleNewTask, setIsVisibleNewTask] = useState(false);
+
+  const windowWidth = Dimensions.get('window').width;
+  const windowHeight = Dimensions.get('window').height;
   function vectorOfColors() {
     let colors = [
       '#2a2928',
@@ -45,7 +48,7 @@ export default function SessionFoco() {
           <MenButton onPress={() => setIsVisibleNewTask(true)}>
             <Icon
               color={'#e91e63'}
-              size={35}
+              size={windowHeight / 20}
               name="plus-circle"
               onPress={() => {}}
             />
@@ -77,11 +80,15 @@ export default function SessionFoco() {
             <ItemGrid>
               <ItemContainer background={vectorOfColors()}>
                 <IconContainer>
-                  <Icon name="book" size={25} color="#fff" />
-                  <Icon name="more-horizontal" size={25} color="#fff" />
+                  <Icon name="book" size={windowHeight / 30} color="#fff" />
+                  <Icon
+                    name="more-horizontal"
+                    size={windowHeight / 30}
+                    color="#fff"
+                  />
                 </IconContainer>
                 <ItemTitle>Arquitetura e Desenho de Software</ItemTitle>
-                <ItemDescription>Descrição</ItemDescription>
+                <ItemDescription>DescriçãoDescrição ...</ItemDescription>
               </ItemContainer>
             </ItemGrid>
           )}

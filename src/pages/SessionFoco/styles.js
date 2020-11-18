@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 import {RectButton} from 'react-native-gesture-handler';
+import {Dimensions} from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 export const Container = styled.SafeAreaView`
   flex: 1;
   padding-left: 30px;
@@ -9,6 +13,7 @@ export const Container = styled.SafeAreaView`
 export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-start;
   border-bottom-width: 1px;
   border-color: #cccc;
 `;
@@ -19,17 +24,18 @@ export const ItemContainer = styled.View`
   flex: 1;
   flex-direction: column;
   border-radius: 25px;
-  height: 120px;
+  height: ${windowHeight / 5};
   width: 180px;
+  justify-content: space-between;
 `;
 export const ItemTitle = styled.Text`
-  font-size: 13px;
+  font-size: ${windowHeight / 50};
   font-weight: bold;
   color: #fafafa;
 `;
 
 export const ItemDescription = styled.Text`
-  font-size: 12px;
+  font-size: ${windowHeight / 60};
   color: #fafafa;
 `;
 
@@ -40,8 +46,7 @@ export const ItemGrid = styled.View`
 export const Title = styled.Text.attrs({
   numberOfLines: 1,
 })`
-
-  font-size: 30px
+  font-size: ${windowHeight / 25};
   font-weight: bold;
   padding-bottom: 30px;
   color: #333;
