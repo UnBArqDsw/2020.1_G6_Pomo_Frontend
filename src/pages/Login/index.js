@@ -20,7 +20,6 @@ import {useDispatch} from 'react-redux';
 
 import {useNavigation} from '@react-navigation/native';
 
-i;
 import {signInRequest} from '../../store/modules/auth/actions';
 
 export default function Login() {
