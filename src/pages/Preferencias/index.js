@@ -10,8 +10,7 @@ import {
   Button,
   TextButton,
   ContainerModal,
-  Form,
-  Input,
+  ButtonSair,
 } from './styles';
 import {Keyboard} from 'react-native';
 export default function Preferencias() {
@@ -33,6 +32,9 @@ export default function Preferencias() {
         <Button onPress={() => setModal(true)}>
           <TextButton>{'Editar perfil'}</TextButton>
         </Button>
+        <ButtonSair onPress={() => setModal(true)}>
+          <TextButton>{'Sair'}</TextButton>
+        </ButtonSair>
       </Body>
       <ContainerModal>
         <Modal show={modal} close={() => setModal(false)} user={test} />
