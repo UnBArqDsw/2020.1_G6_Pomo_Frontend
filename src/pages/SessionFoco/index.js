@@ -28,7 +28,13 @@ export default function SessionFoco() {
   const [search, setSearch] = useState('');
   const [isVisibleNewTask, setIsVisibleNewTask] = useState(false);
   const [isVisibleEditTask, setIsVisibleEditTask] = useState(false);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState({
+    color: '#fff',
+    name: 'example',
+    description: 'example',
+    icon: 'fork',
+  });
+  const [currentTask, setCurrentTask] = useState([]);
   const user = useSelector((state) => state.user.profile);
 
   // useEffect(() => {
@@ -72,6 +78,12 @@ export default function SessionFoco() {
 
     return colors[random];
   }
+
+  function openTaskEditor(task) {
+    setIsVisibleEditTask(true);
+    setCurrentTask(task.item);
+    console.log(task.item);
+  }
   return (
     <>
       <Container>
@@ -102,11 +114,12 @@ export default function SessionFoco() {
           isVisible={isVisibleNewTask}
           onCancel={() => setIsVisibleNewTask(false)}
         />
-
         <EditTask
           isVisible={isVisibleEditTask}
           onCancel={() => setIsVisibleEditTask(false)}
+          data={currentTask}
         />
+
         {tasks.length != 0 ? (
           <FlatList
             data={tasks}
@@ -122,7 +135,7 @@ export default function SessionFoco() {
                       size={windowHeight / 30}
                       color="#fff"
                     />
-                    <MoreButton onPress={() => setIsVisibleEditTask(true)}>
+                    <MoreButton onPress={() => openTaskEditor(task)}>
                       <Icon
                         name="more-horizontal"
                         size={windowHeight / 30}

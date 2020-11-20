@@ -12,14 +12,18 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 import IconPickedFromUser from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
-import {ColorPicker} from 'react-native-color-picker';
+import {ColorPicker, fromHsv} from 'react-native-color-picker';
 import IconPicker from 'react-native-vector-icon-picker';
+import {ItemContainer} from '../../pages/SessionFoco/styles';
 
-export default function EditTask({isVisible, onCancel}) {
+export default function EditTask({isVisible, onCancel, data}) {
+  const [colorTask, setColorTask] = useState(data.color);
   const windowHeight = Dimensions.get('window').height;
   const windowWidth = Dimensions.get('window').width;
   const [is_keyboard_open, setIsKeyboardOpen] = useState(false);
   const [icon, setIcon] = useState('star');
+  console.log('->>>>>>>>', colorTask);
+  console.log('-;;;;;;;;; ', data.color);
   useEffect(() => {
     keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
@@ -30,6 +34,8 @@ export default function EditTask({isVisible, onCancel}) {
       keyboardDidHide,
     );
     console.log(is_keyboard_open);
+
+    setColorTask();
   });
 
   function keyboardDidShow() {
@@ -59,19 +65,20 @@ export default function EditTask({isVisible, onCancel}) {
           <TextInput
             style={styles.input}
             color="#000"
-            placeholder="Nome"
             autoCorrect={false}
             placeholderTextColor="#000"
-            onChangeText={() => {}}
-          />
+            onChangeText={() => {}}>
+            {data.name}
+          </TextInput>
           <TextInput
             style={styles.input}
             color="#000"
             placeholder="Descrição"
             autoCorrect={false}
             placeholderTextColor="#000"
-            onChangeText={() => {}}
-          />
+            onChangeText={() => {}}>
+            {data.description}
+          </TextInput>
         </View>
         {!is_keyboard_open ? (
           <View style={styles.colorAndIconContainer}>
@@ -82,10 +89,17 @@ export default function EditTask({isVisible, onCancel}) {
               <View style={styles.colorContainerPicker}>
                 <ColorPicker
                   onColorChange={(color) =>
-                    console.log(`Color selected: ${color.h}`)
+                    setColorTask(
+                      fromHsv({
+                        h: color.h,
+                        s: color.s,
+                        v: color.v,
+                      }),
+                    )
                   }
                   style={{flex: 1}}
-                  hideSliders={false}
+                  hideSliders={true}
+                  defaultColor={data.color}
                 />
               </View>
             </View>
@@ -94,7 +108,7 @@ export default function EditTask({isVisible, onCancel}) {
                 <Text style={styles.textPickers}>Escolha um ícone</Text>
                 <View style={{marginTop: windowHeight / 20}}>
                   <IconPickedFromUser
-                    name={icon}
+                    name={data.icon}
                     size={windowHeight / 20}
                     color="#FFF"
                   />
