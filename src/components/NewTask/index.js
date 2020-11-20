@@ -23,7 +23,7 @@ export default function NewTask({isVisible, onCancel}) {
   const [is_keyboard_open, setIsKeyboardOpen] = useState(false);
   const [icon, setIcon] = useState('star');
   const [name, setName] = useState('');
-  const [colorTask, setColorTask] = useState('');
+  const [colorTask, setColorTask] = useState('#FF0000');
   const [description, setDescription] = useState('');
 
   const user = useSelector((state) => state.user.profile);
@@ -49,7 +49,8 @@ export default function NewTask({isVisible, onCancel}) {
 
   async function createTask() {
     // try {
-    setColorTask(fromHsv({h: colorTask.h, s: colorTask.s, v: colorTask.v}));
+    // setColorTask(fromHsv({h: colorTask.h, s: colorTask.s, v: colorTask.v}));
+    console.log(colorTask);
     const data = await api.post(`users/${user.id}/tasks`, {
       color: colorTask,
       name: name,
@@ -104,15 +105,18 @@ export default function NewTask({isVisible, onCancel}) {
               </View>
               <View style={styles.colorContainerPicker}>
                 <ColorPicker
-                  onColorChange={
-                    ((color) =>
-                      setColorTask({h: color.h, s: color.s, v: color.v}),
-                    console.log(
-                      fromHsv({h: colorTask.h, s: colorTask.s, v: colorTask.v}),
-                    ))
+                  onColorChange={(color) =>
+                    setColorTask(
+                      fromHsv({
+                        h: color.h,
+                        s: color.s,
+                        v: color.v,
+                      }),
+                    )
                   }
                   style={{flex: 1}}
                   hideSliders={true}
+                  defaultColor={colorTask}
                 />
               </View>
             </View>
