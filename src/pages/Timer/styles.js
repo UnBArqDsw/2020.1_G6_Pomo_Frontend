@@ -21,6 +21,14 @@ export const CircleContainer = styled.View`
   border-width: 1px;
   border-color: #ccc;
 `;
+export const TaskPickerContainer = styled.View`
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  border-width: 1px;
+  border-color: #ccc;
+  width: 90%;
+`;
 
 export const MenButton = styled(RectButton)`
   border-radius: 75px;

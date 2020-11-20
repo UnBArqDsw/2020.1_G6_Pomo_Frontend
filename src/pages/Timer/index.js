@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Container,
   MenButton,
@@ -6,19 +6,49 @@ import {
   CircleContainer,
   ResetButton,
   ButtonText,
+  TaskPickerContainer,
 } from './styles';
 
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
+import RNPickerSelect from 'react-native-picker-select';
+import {useDispatch, useSelector} from 'react-redux';
+import api from '../../services/api';
+import {Picker} from '@react-native-picker/picker';
 
-var global_time = 10; // valor vira do backend
+var global_time = 25;
 export default function Timer() {
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(global_time);
   const [start, setStart] = useState(false);
   const [timer, setTimer] = useState(0);
+  const [tasks, setTasks] = useState([]);
+  const [currentTask, setCurrentTask] = useState([]);
+  const user = useSelector((state) => state.user.profile);
   let time;
   let aux_seconds = seconds;
   let aux_minutes = minutes;
+
+  useEffect(() => {
+    async function getItems() {
+      try {
+        const data = await api.get(`users/${user.id}/tasks`);
+        setTasks(data.data);
+        // let list = [];
+        // for (let task of data.data) {
+        //   let item = {
+        //     label: task.name,
+        //     value: task.name,
+        //   };
+        //   list.push(item);
+        // }
+
+        // setTasks(list);
+      } catch (error) {
+        alert('Ocorreu um erro ao buscar os items');
+      }
+    }
+    getItems();
+  }, [user]);
 
   function startStopButton(stop) {
     setStart(stop);
@@ -72,6 +102,23 @@ export default function Timer() {
           )}
         </AnimatedCircularProgress>
       </CircleContainer>
+      <TaskPickerContainer>
+        {/* <RNPickerSelect
+          onValueChange={(value) => setCurrentTask(value)}
+          items={tasks}
+          placeholder="ola"
+        /> */}
+        <Picker
+          selectedValue={currentTask}
+          style={{height: 50, width: '100%'}}
+          onValueChange={(itemValue, itemIndex) => setCurrentTask(itemValue)}>
+          {/* <Picker.Item label="Java" value="java" />
+          <Picker.Item label="JavaScript" value="js" /> */}
+          {Object.values(tasks).map((task) => (
+            <Picker.Item label={task.name} value={task.name} />
+          ))}
+        </Picker>
+      </TaskPickerContainer>
       <ResetButton
         onPress={() => {
           setMinutes(25);
