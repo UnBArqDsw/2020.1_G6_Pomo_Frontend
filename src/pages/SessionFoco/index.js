@@ -14,6 +14,7 @@ import {
   MoreButton,
 } from './styles';
 import Icon from 'react-native-vector-icons/Feather';
+import IconPickedFromUser from 'react-native-vector-icons/AntDesign';
 import {SearchBar} from 'react-native-elements';
 import NewTask from '../../components/NewTask';
 import EditTask from '../../components/EditTask';
@@ -42,7 +43,6 @@ export default function SessionFoco() {
       try {
         const data = await api.get(`users/${user.id}/tasks`);
         setTasks(data.data);
-        console.log(data.data);
       } catch (error) {
         alert('Ocorreu um erro ao buscar os items');
       }
@@ -112,10 +112,13 @@ export default function SessionFoco() {
           numColumns={2}
           renderItem={(task) => (
             <ItemGrid>
-              {console.log('->>>>>>>>>>>>>>>>>>=item  ' + task.name)}
               <ItemContainer background={task.item.color}>
                 <IconContainer>
-                  <Icon name="book" size={windowHeight / 30} color="#fff" />
+                  <IconPickedFromUser
+                    name={task.item.icon}
+                    size={windowHeight / 30}
+                    color="#fff"
+                  />
                   <MoreButton onPress={() => setIsVisibleEditTask(true)}>
                     <Icon
                       name="more-horizontal"
