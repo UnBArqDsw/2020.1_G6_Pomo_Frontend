@@ -69,3 +69,14 @@ export const MenButton = styled(RectButton)`
 export const MoreButton = styled(TouchableOpacity)`
   align-items: center;
 `;
+
+export const NoSessionOfFocus = styled.View`
+  justify-content: center;
+  padding: 10px;
+  align-items: center;
+`;
+
+export const NoSessionOfFocusText = styled.Text`
+  font-size: ${windowHeight / 50};
+  color: #828282;
+`;

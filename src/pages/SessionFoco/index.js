@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useCallback} from 'react';
-import {FlatList, Dimensions, TouchableOpacity} from 'react-native';
+import {FlatList, Dimensions, View, Text} from 'react-native';
 
 import {
   ItemContainer,
@@ -12,6 +12,8 @@ import {
   Header,
   MenButton,
   MoreButton,
+  NoSessionOfFocus,
+  NoSessionOfFocusText,
 } from './styles';
 import Icon from 'react-native-vector-icons/Feather';
 import IconPickedFromUser from 'react-native-vector-icons/AntDesign';
@@ -26,7 +28,7 @@ export default function SessionFoco() {
   const [search, setSearch] = useState('');
   const [isVisibleNewTask, setIsVisibleNewTask] = useState(false);
   const [isVisibleEditTask, setIsVisibleEditTask] = useState(false);
-  const [tasks, setTasks] = useState('');
+  const [tasks, setTasks] = useState([]);
   const user = useSelector((state) => state.user.profile);
 
   // useEffect(() => {
@@ -43,6 +45,7 @@ export default function SessionFoco() {
       try {
         const data = await api.get(`users/${user.id}/tasks`);
         setTasks(data.data);
+        console.log('->>>>>>>>>', tasks);
       } catch (error) {
         alert('Ocorreu um erro ao buscar os items');
       }
@@ -104,35 +107,43 @@ export default function SessionFoco() {
           isVisible={isVisibleEditTask}
           onCancel={() => setIsVisibleEditTask(false)}
         />
-
-        <FlatList
-          data={tasks}
-          keyExtractor={(item) => String(item.id)}
-          showsVerticalScrollIndicator={false}
-          numColumns={2}
-          renderItem={(task) => (
-            <ItemGrid>
-              <ItemContainer background={task.item.color}>
-                <IconContainer>
-                  <IconPickedFromUser
-                    name={task.item.icon}
-                    size={windowHeight / 30}
-                    color="#fff"
-                  />
-                  <MoreButton onPress={() => setIsVisibleEditTask(true)}>
-                    <Icon
-                      name="more-horizontal"
+        {tasks.length != 0 ? (
+          <FlatList
+            data={tasks}
+            keyExtractor={(item) => String(item.id)}
+            showsVerticalScrollIndicator={false}
+            numColumns={2}
+            renderItem={(task) => (
+              <ItemGrid>
+                <ItemContainer background={task.item.color}>
+                  <IconContainer>
+                    <IconPickedFromUser
+                      name={task.item.icon}
                       size={windowHeight / 30}
                       color="#fff"
                     />
-                  </MoreButton>
-                </IconContainer>
-                <ItemTitle>{task.item.name}</ItemTitle>
-                <ItemDescription>{task.item.description}</ItemDescription>
-              </ItemContainer>
-            </ItemGrid>
-          )}
-        />
+                    <MoreButton onPress={() => setIsVisibleEditTask(true)}>
+                      <Icon
+                        name="more-horizontal"
+                        size={windowHeight / 30}
+                        color="#fff"
+                      />
+                    </MoreButton>
+                  </IconContainer>
+                  <ItemTitle>{task.item.name}</ItemTitle>
+                  <ItemDescription>{task.item.description}</ItemDescription>
+                </ItemContainer>
+              </ItemGrid>
+            )}
+          />
+        ) : (
+          <NoSessionOfFocus>
+            <NoSessionOfFocusText>
+              {' '}
+              Ainda não há sessões cadastradas
+            </NoSessionOfFocusText>
+          </NoSessionOfFocus>
+        )}
       </Container>
     </>
   );
