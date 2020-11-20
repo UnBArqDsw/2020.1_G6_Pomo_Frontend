@@ -110,7 +110,7 @@ export default function Timer() {
         /> */}
         <Picker
           selectedValue={currentTask}
-          style={{height: 50, width: '100%'}}
+          style={{height: 40, width: '100%'}}
           onValueChange={(itemValue, itemIndex) => setCurrentTask(itemValue)}>
           {/* <Picker.Item label="Java" value="java" />
           <Picker.Item label="JavaScript" value="js" /> */}
