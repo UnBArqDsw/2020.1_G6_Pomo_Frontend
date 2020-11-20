@@ -29,6 +29,14 @@ export default function EditTask({isVisible, onCancel, data}) {
   const [icon, setIcon] = useState('');
 
   useEffect(() => {
+    if (isVisible) {
+      setName(data.name);
+      setDescription(data.description);
+      setColorTask(data.color);
+      setIcon(data.icon);
+    }
+  }, [data]);
+  useEffect(() => {
     keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
       keyboardDidShow,
@@ -39,15 +47,6 @@ export default function EditTask({isVisible, onCancel, data}) {
     );
   });
 
-  useEffect(() => {
-    if (isVisible) {
-      setName(data.name);
-      setDescription(data.description);
-      setColorTask(data.color);
-      setIcon(data.icon);
-    }
-  }, [data]);
-
   function keyboardDidShow() {
     setIsKeyboardOpen(true);
   }
@@ -57,6 +56,30 @@ export default function EditTask({isVisible, onCancel, data}) {
 
   function keyboardDidHide() {
     setIsKeyboardOpen(false);
+  }
+  async function editTask() {
+    console.log(data.id);
+    const response = await api.put(`tasks/${data.id}`, {
+      color: colorTask,
+      name: name,
+      description: description,
+      icon: icon,
+    });
+    console.log(response.status);
+
+    if (response.status == 200) {
+      if (isVisible) {
+        alert('Alterado com sucesso!');
+      }
+    } else {
+      if (isVisible) {
+        alert('campos incorretos');
+      }
+    }
+    // console.log(colorTask, name, description, icon);
+    // } catch (error) {
+    //   alert('Ocorreu um erro ao buscar os items');
+    // }
   }
   return (
     <Modal
@@ -70,7 +93,7 @@ export default function EditTask({isVisible, onCancel, data}) {
             <Icon color={'#e91e63'} size={windowHeight / 20} name="x" />
           </TouchableOpacity>
           <Text style={styles.headerText}>Editar sessão</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => editTask()}>
             <Icon color={'#e91e63'} size={windowHeight / 20} name="save" />
           </TouchableOpacity>
         </View>
@@ -112,7 +135,7 @@ export default function EditTask({isVisible, onCancel, data}) {
                   }
                   style={{flex: 1}}
                   hideSliders={true}
-                  defaultColor={data.color}
+                  defaultColor={colorTask}
                 />
               </View>
             </View>

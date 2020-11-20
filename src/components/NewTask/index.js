@@ -58,7 +58,15 @@ export default function NewTask({isVisible, onCancel}) {
       icon: icon,
     });
     // console.log(colorTask, name, description, icon);
-    console.log(data.data);
+    if (data.status == 200) {
+      if (isVisible) {
+        alert('Sessão de foco criada com sucesso!');
+      }
+    } else {
+      if (isVisible) {
+        alert('campos incorretos');
+      }
+    }
     // } catch (error) {
     //   alert('Ocorreu um erro ao buscar os items');
     // }
