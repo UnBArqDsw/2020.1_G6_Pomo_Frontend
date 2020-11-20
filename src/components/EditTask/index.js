@@ -15,15 +15,19 @@ import styles from './styles';
 import {ColorPicker, fromHsv} from 'react-native-color-picker';
 import IconPicker from 'react-native-vector-icon-picker';
 import {ItemContainer} from '../../pages/SessionFoco/styles';
+import {useDispatch, useSelector} from 'react-redux';
+import api from '../../services/api';
 
 export default function EditTask({isVisible, onCancel, data}) {
-  const [colorTask, setColorTask] = useState(data.color);
   const windowHeight = Dimensions.get('window').height;
   const windowWidth = Dimensions.get('window').width;
   const [is_keyboard_open, setIsKeyboardOpen] = useState(false);
-  const [icon, setIcon] = useState('star');
-  console.log('->>>>>>>>', colorTask);
-  console.log('-;;;;;;;;; ', data.color);
+
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [colorTask, setColorTask] = useState('');
+  const [icon, setIcon] = useState('');
+
   useEffect(() => {
     keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
@@ -33,13 +37,22 @@ export default function EditTask({isVisible, onCancel, data}) {
       'keyboardDidHide',
       keyboardDidHide,
     );
-    console.log(is_keyboard_open);
-
-    setColorTask();
   });
+
+  useEffect(() => {
+    if (isVisible) {
+      setName(data.name);
+      setDescription(data.description);
+      setColorTask(data.color);
+      setIcon(data.icon);
+    }
+  }, [data]);
 
   function keyboardDidShow() {
     setIsKeyboardOpen(true);
+  }
+  function print() {
+    console.log(name, description, colorTask, icon);
   }
 
   function keyboardDidHide() {
@@ -67,7 +80,7 @@ export default function EditTask({isVisible, onCancel, data}) {
             color="#000"
             autoCorrect={false}
             placeholderTextColor="#000"
-            onChangeText={() => {}}>
+            onChangeText={(text) => setName(text)}>
             {data.name}
           </TextInput>
           <TextInput
@@ -76,7 +89,7 @@ export default function EditTask({isVisible, onCancel, data}) {
             placeholder="Descrição"
             autoCorrect={false}
             placeholderTextColor="#000"
-            onChangeText={() => {}}>
+            onChangeText={(text) => setDescription(text)}>
             {data.description}
           </TextInput>
         </View>
@@ -108,7 +121,7 @@ export default function EditTask({isVisible, onCancel, data}) {
                 <Text style={styles.textPickers}>Escolha um ícone</Text>
                 <View style={{marginTop: windowHeight / 20}}>
                   <IconPickedFromUser
-                    name={data.icon}
+                    name={icon}
                     size={windowHeight / 20}
                     color="#FFF"
                   />
@@ -140,7 +153,7 @@ export default function EditTask({isVisible, onCancel, data}) {
           console.log('teclado aberto')
         )}
         <View style={styles.deleteContainer}>
-          <TouchableOpacity style={styles.deleteButton}>
+          <TouchableOpacity onPress={() => print()} style={styles.deleteButton}>
             <Text style={styles.deleteText}>Deletar tarefa</Text>
           </TouchableOpacity>
         </View>

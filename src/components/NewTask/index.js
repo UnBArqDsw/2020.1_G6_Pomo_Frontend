@@ -36,7 +36,7 @@ export default function NewTask({isVisible, onCancel}) {
       'keyboardDidHide',
       keyboardDidHide,
     );
-    console.log(is_keyboard_open);
+    // console.log(is_keyboard_open);
   });
 
   function keyboardDidShow() {

@@ -51,7 +51,6 @@ export default function SessionFoco() {
       try {
         const data = await api.get(`users/${user.id}/tasks`);
         setTasks(data.data);
-        console.log('->>>>>>>>>', tasks);
       } catch (error) {
         alert('Ocorreu um erro ao buscar os items');
       }
@@ -82,7 +81,6 @@ export default function SessionFoco() {
   function openTaskEditor(task) {
     setIsVisibleEditTask(true);
     setCurrentTask(task.item);
-    console.log(task.item);
   }
   return (
     <>
