@@ -78,7 +78,7 @@ export default function Menssage({navigation}) {
             />
             <Info>
               <Title>{item.name}</Title>
-              <LastMenssage>{'Ultima menssagem ...'}</LastMenssage>
+              <LastMenssage>{'Ultima mensagem ...'}</LastMenssage>
             </Info>
           </LMenssage>
         )}

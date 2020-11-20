@@ -41,7 +41,7 @@ export default function Register({navigation}) {
         <StatusBar barStyle="light-content" backgroundColor="#FF0004" />
         <View style={styles.header}>
           <Text style={styles.headerText}>
-            Bem-vind@ ao <Text style={{color: '#FFF'}}>POMO</Text>!
+            Bem-vindo(a) ao <Text style={{color: '#FFF'}}>POMO</Text>!
           </Text>
         </View>
         <FlatList

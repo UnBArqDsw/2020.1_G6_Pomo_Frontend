@@ -20,8 +20,11 @@ export function* signUp({payload}) {
       password,
     });
     // history.push('/');
+    Alert.alert(
+      'Conta criada com sucesso! Volte para a página de login para iniciar',
+    );
   } catch (err) {
-    Alert.alert('Falha no cadrastro', 'Verifique seus dados.');
+    Alert.alert('Falha no cadastro', 'Verifique seus dados.');
 
     yield put(signFailure());
   }
