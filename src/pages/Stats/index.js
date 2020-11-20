@@ -13,10 +13,10 @@ import {LineChart} from 'react-native-chart-kit';
 
 export default function Stats() {
   const users = [
-    {name: 'grafico 1'},
-    {name: 'grafico 2'},
-    {name: 'grafico 3'},
-    {name: 'grafico 4'},
+    {name: 'Arquitetura e Desenho de Software'},
+    {name: 'Testes'},
+    {name: 'Md1'},
+    {name: 'Criptografia'},
   ];
 
   return (
@@ -28,9 +28,7 @@ export default function Stats() {
         renderItem={({item}) => (
           <LGraphics>
             <Info>
-              <TitleOfEachChart>
-                {'Arquitetura e Desenho de Software'}
-              </TitleOfEachChart>
+              <TitleOfEachChart>{item.name}</TitleOfEachChart>
               <LineChart
                 data={{
                   labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
