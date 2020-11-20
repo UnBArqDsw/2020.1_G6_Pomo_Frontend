@@ -50,9 +50,6 @@ export default function EditTask({isVisible, onCancel, data}) {
   function keyboardDidShow() {
     setIsKeyboardOpen(true);
   }
-  function print() {
-    console.log(name, description, colorTask, icon);
-  }
 
   function keyboardDidHide() {
     setIsKeyboardOpen(false);
@@ -76,10 +73,21 @@ export default function EditTask({isVisible, onCancel, data}) {
         alert('campos incorretos');
       }
     }
-    // console.log(colorTask, name, description, icon);
-    // } catch (error) {
-    //   alert('Ocorreu um erro ao buscar os items');
-    // }
+  }
+  async function deleteTask() {
+    console.log(data.id);
+    const response = await api.delete(`tasks/${data.id}`);
+    console.log(response.status);
+
+    if (response.status == 200) {
+      if (isVisible) {
+        alert('Deletada com sucesso!');
+      }
+    } else {
+      if (isVisible) {
+        alert('campos incorretos');
+      }
+    }
   }
   return (
     <Modal
@@ -176,7 +184,9 @@ export default function EditTask({isVisible, onCancel, data}) {
           console.log('teclado aberto')
         )}
         <View style={styles.deleteContainer}>
-          <TouchableOpacity onPress={() => print()} style={styles.deleteButton}>
+          <TouchableOpacity
+            onPress={() => deleteTask()}
+            style={styles.deleteButton}>
             <Text style={styles.deleteText}>Deletar tarefa</Text>
           </TouchableOpacity>
         </View>
