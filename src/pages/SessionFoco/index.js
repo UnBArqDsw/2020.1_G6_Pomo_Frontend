@@ -42,7 +42,7 @@ export default function SessionFoco() {
       try {
         const data = await api.get(`users/${user.id}/tasks`);
         setTasks(data.data);
-        // console.log(data.data);
+        console.log(data.data);
       } catch (error) {
         alert('Ocorreu um erro ao buscar os items');
       }
@@ -110,10 +110,10 @@ export default function SessionFoco() {
           keyExtractor={(item) => String(item.id)}
           showsVerticalScrollIndicator={false}
           numColumns={2}
-          renderItem={(item) => (
+          renderItem={(task) => (
             <ItemGrid>
-              {console.log(item)}
-              <ItemContainer background={vectorOfColors()}>
+              {console.log('->>>>>>>>>>>>>>>>>>=item  ' + task.name)}
+              <ItemContainer background={task.item.color}>
                 <IconContainer>
                   <Icon name="book" size={windowHeight / 30} color="#fff" />
                   <MoreButton onPress={() => setIsVisibleEditTask(true)}>
@@ -124,8 +124,8 @@ export default function SessionFoco() {
                     />
                   </MoreButton>
                 </IconContainer>
-                <ItemTitle>task</ItemTitle>
-                <ItemDescription>123</ItemDescription>
+                <ItemTitle>{task.item.name}</ItemTitle>
+                <ItemDescription>{task.item.description}</ItemDescription>
               </ItemContainer>
             </ItemGrid>
           )}
