@@ -16,10 +16,11 @@ import styles from './styles';
 import logo from '../../assets/logo.png';
 import Background from '../../components/Background';
 
-import {teste} from '../../store/modules/navigate/actions';
 import {useDispatch} from 'react-redux';
 
 import {useNavigation} from '@react-navigation/native';
+
+import {signInRequest} from '../../store/modules/auth/actions';
 
 export default function Login() {
   const windowWidth = Dimensions.get('window').width;
@@ -33,7 +34,9 @@ export default function Login() {
   const [opacity] = useState(new Animated.Value(0));
   const [is_keyboard_open, setIsKeyboardOpen] = useState(false);
   const navigation = useNavigation();
+  const [email, setEmail] = useState();
 
+  const [password, setPassword] = useState();
   useEffect(() => {
     keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
@@ -109,10 +112,10 @@ export default function Login() {
     // navigation.replace(page)
   }
   console.disableYellowBox = true;
-  function handleSubmit() {
-    dispatch(teste(true));
-  }
 
+  function handleSubmit() {
+    dispatch(signInRequest(email, password));
+  }
   return (
     <Background>
       <KeyboardAvoidingView behavior="height" style={styles.background}>
@@ -162,7 +165,9 @@ export default function Login() {
             autoCorrect={false}
             placeholderTextColor="#FFF"
             keyboardType="email-address"
-            onChangeText={() => {}}
+            onChangeText={(text) => {
+              setEmail(text);
+            }}
           />
           <TextInput
             style={styles.input}
@@ -170,7 +175,9 @@ export default function Login() {
             autoCorrect={false}
             secureTextEntry={true}
             placeholderTextColor="#FFF"
-            onChangeText={() => {}}
+            onChangeText={(text) => {
+              setPassword(text);
+            }}
           />
 
           <TouchableOpacity

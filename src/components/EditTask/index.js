@@ -12,14 +12,30 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 import IconPickedFromUser from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
-import {ColorPicker} from 'react-native-color-picker';
+import {ColorPicker, fromHsv} from 'react-native-color-picker';
 import IconPicker from 'react-native-vector-icon-picker';
+import {ItemContainer} from '../../pages/SessionFoco/styles';
+import {useDispatch, useSelector} from 'react-redux';
+import api from '../../services/api';
 
-export default function EditTask({isVisible, onCancel}) {
+export default function EditTask({isVisible, onCancel, data}) {
   const windowHeight = Dimensions.get('window').height;
   const windowWidth = Dimensions.get('window').width;
   const [is_keyboard_open, setIsKeyboardOpen] = useState(false);
-  const [icon, setIcon] = useState('star');
+
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [colorTask, setColorTask] = useState('');
+  const [icon, setIcon] = useState('');
+
+  useEffect(() => {
+    if (isVisible) {
+      setName(data.name);
+      setDescription(data.description);
+      setColorTask(data.color);
+      setIcon(data.icon);
+    }
+  }, [data]);
   useEffect(() => {
     keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
@@ -29,7 +45,6 @@ export default function EditTask({isVisible, onCancel}) {
       'keyboardDidHide',
       keyboardDidHide,
     );
-    console.log(is_keyboard_open);
   });
 
   function keyboardDidShow() {
@@ -38,6 +53,41 @@ export default function EditTask({isVisible, onCancel}) {
 
   function keyboardDidHide() {
     setIsKeyboardOpen(false);
+  }
+  async function editTask() {
+    console.log(data.id);
+    const response = await api.put(`tasks/${data.id}`, {
+      color: colorTask,
+      name: name,
+      description: description,
+      icon: icon,
+    });
+    console.log(response.status);
+
+    if (response.status == 200) {
+      if (isVisible) {
+        alert('Alterado com sucesso!');
+      }
+    } else {
+      if (isVisible) {
+        alert('campos incorretos');
+      }
+    }
+  }
+  async function deleteTask() {
+    console.log(data.id);
+    const response = await api.delete(`tasks/${data.id}`);
+    console.log(response.status);
+
+    if (response.status == 200) {
+      if (isVisible) {
+        alert('Deletada com sucesso!');
+      }
+    } else {
+      if (isVisible) {
+        alert('campos incorretos');
+      }
+    }
   }
   return (
     <Modal
@@ -51,7 +101,7 @@ export default function EditTask({isVisible, onCancel}) {
             <Icon color={'#e91e63'} size={windowHeight / 20} name="x" />
           </TouchableOpacity>
           <Text style={styles.headerText}>Editar sessão</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => editTask()}>
             <Icon color={'#e91e63'} size={windowHeight / 20} name="save" />
           </TouchableOpacity>
         </View>
@@ -59,19 +109,20 @@ export default function EditTask({isVisible, onCancel}) {
           <TextInput
             style={styles.input}
             color="#000"
-            placeholder="Nome"
             autoCorrect={false}
             placeholderTextColor="#000"
-            onChangeText={() => {}}
-          />
+            onChangeText={(text) => setName(text)}>
+            {data.name}
+          </TextInput>
           <TextInput
             style={styles.input}
             color="#000"
             placeholder="Descrição"
             autoCorrect={false}
             placeholderTextColor="#000"
-            onChangeText={() => {}}
-          />
+            onChangeText={(text) => setDescription(text)}>
+            {data.description}
+          </TextInput>
         </View>
         {!is_keyboard_open ? (
           <View style={styles.colorAndIconContainer}>
@@ -82,10 +133,17 @@ export default function EditTask({isVisible, onCancel}) {
               <View style={styles.colorContainerPicker}>
                 <ColorPicker
                   onColorChange={(color) =>
-                    console.log(`Color selected: ${color.h}`)
+                    setColorTask(
+                      fromHsv({
+                        h: color.h,
+                        s: color.s,
+                        v: color.v,
+                      }),
+                    )
                   }
                   style={{flex: 1}}
-                  hideSliders={false}
+                  hideSliders={true}
+                  defaultColor={colorTask}
                 />
               </View>
             </View>
@@ -126,7 +184,9 @@ export default function EditTask({isVisible, onCancel}) {
           console.log('teclado aberto')
         )}
         <View style={styles.deleteContainer}>
-          <TouchableOpacity style={styles.deleteButton}>
+          <TouchableOpacity
+            onPress={() => deleteTask()}
+            style={styles.deleteButton}>
             <Text style={styles.deleteText}>Deletar tarefa</Text>
           </TouchableOpacity>
         </View>

@@ -12,14 +12,21 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 import IconPickedFromUser from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
-import {ColorPicker} from 'react-native-color-picker';
+import {ColorPicker, fromHsv} from 'react-native-color-picker';
 import IconPicker from 'react-native-vector-icon-picker';
+import {useDispatch, useSelector} from 'react-redux';
+import api from '../../services/api';
 
 export default function NewTask({isVisible, onCancel}) {
   const windowHeight = Dimensions.get('window').height;
   const windowWidth = Dimensions.get('window').width;
   const [is_keyboard_open, setIsKeyboardOpen] = useState(false);
   const [icon, setIcon] = useState('star');
+  const [name, setName] = useState('');
+  const [colorTask, setColorTask] = useState('#FF0000');
+  const [description, setDescription] = useState('');
+
+  const user = useSelector((state) => state.user.profile);
   useEffect(() => {
     keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
@@ -29,7 +36,7 @@ export default function NewTask({isVisible, onCancel}) {
       'keyboardDidHide',
       keyboardDidHide,
     );
-    console.log(is_keyboard_open);
+    // console.log(is_keyboard_open);
   });
 
   function keyboardDidShow() {
@@ -38,6 +45,31 @@ export default function NewTask({isVisible, onCancel}) {
 
   function keyboardDidHide() {
     setIsKeyboardOpen(false);
+  }
+
+  async function createTask() {
+    // try {
+    // setColorTask(fromHsv({h: colorTask.h, s: colorTask.s, v: colorTask.v}));
+    console.log(colorTask);
+    const data = await api.post(`users/${user.id}/tasks`, {
+      color: colorTask,
+      name: name,
+      description: description,
+      icon: icon,
+    });
+    // console.log(colorTask, name, description, icon);
+    if (data.status == 200) {
+      if (isVisible) {
+        alert('Sessão de foco criada com sucesso!');
+      }
+    } else {
+      if (isVisible) {
+        alert('campos incorretos');
+      }
+    }
+    // } catch (error) {
+    //   alert('Ocorreu um erro ao buscar os items');
+    // }
   }
   return (
     <Modal
@@ -51,7 +83,7 @@ export default function NewTask({isVisible, onCancel}) {
             <Icon color={'#e91e63'} size={windowHeight / 20} name="x" />
           </TouchableOpacity>
           <Text style={styles.headerText}>Criar sessão</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => createTask()}>
             <Icon color={'#e91e63'} size={windowHeight / 20} name="save" />
           </TouchableOpacity>
         </View>
@@ -62,7 +94,7 @@ export default function NewTask({isVisible, onCancel}) {
             placeholder="Nome"
             autoCorrect={false}
             placeholderTextColor="#000"
-            onChangeText={() => {}}
+            onChangeText={(text) => setName(text)}
           />
           <TextInput
             style={styles.input}
@@ -70,7 +102,7 @@ export default function NewTask({isVisible, onCancel}) {
             placeholder="Descrição"
             autoCorrect={false}
             placeholderTextColor="#000"
-            onChangeText={() => {}}
+            onChangeText={(text) => setDescription(text)}
           />
         </View>
         {!is_keyboard_open ? (
@@ -82,10 +114,17 @@ export default function NewTask({isVisible, onCancel}) {
               <View style={styles.colorContainerPicker}>
                 <ColorPicker
                   onColorChange={(color) =>
-                    console.log(`Color selected: ${color.h}`)
+                    setColorTask(
+                      fromHsv({
+                        h: color.h,
+                        s: color.s,
+                        v: color.v,
+                      }),
+                    )
                   }
                   style={{flex: 1}}
-                  hideSliders={false}
+                  hideSliders={true}
+                  defaultColor={colorTask}
                 />
               </View>
             </View>

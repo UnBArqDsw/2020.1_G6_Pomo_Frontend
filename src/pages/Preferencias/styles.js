@@ -59,7 +59,7 @@ export const Button = styled(RectButton)`
 export const TextButton = styled.Text`
   font-size: 14px;
   font-weight: bold;
-  color: #333;
+  color: #fff;
   text-transform: uppercase;
 `;
 
@@ -93,4 +93,14 @@ export const Input = styled.TextInput.attrs({
   border-radius: 20px;
   padding: 0 15px;
   border: 1px solid #999;
+`;
+export const ButtonSair = styled(RectButton)`
+  align-self: stretch;
+  border-radius: 23px;
+
+  background-color: #ca054d;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
 `;

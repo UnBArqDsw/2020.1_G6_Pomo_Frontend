@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {FlatList, Dimensions, TouchableOpacity} from 'react-native';
+import React, {useEffect, useState, useCallback} from 'react';
+import {FlatList, Dimensions, View, Text} from 'react-native';
 
 import {
   ItemContainer,
@@ -12,18 +12,52 @@ import {
   Header,
   MenButton,
   MoreButton,
+  NoSessionOfFocus,
+  NoSessionOfFocusText,
 } from './styles';
 import Icon from 'react-native-vector-icons/Feather';
+import IconPickedFromUser from 'react-native-vector-icons/AntDesign';
 import {SearchBar} from 'react-native-elements';
 import NewTask from '../../components/NewTask';
 import EditTask from '../../components/EditTask';
+import {useDispatch, useSelector} from 'react-redux';
+import api from '../../services/api';
+import {useFocusEffect} from '@react-navigation/native';
 
 export default function SessionFoco() {
   const [search, setSearch] = useState('');
   const [isVisibleNewTask, setIsVisibleNewTask] = useState(false);
   const [isVisibleEditTask, setIsVisibleEditTask] = useState(false);
+  const [tasks, setTasks] = useState({
+    color: '#fff',
+    name: 'example',
+    description: 'example',
+    icon: 'fork',
+  });
+  const [currentTask, setCurrentTask] = useState([]);
+  const user = useSelector((state) => state.user.profile);
 
-  const windowWidth = Dimensions.get('window').width;
+  // useEffect(() => {
+  //   async function loadTasks() {
+  //     const response = await api.get(`users/${user.id}/tasks`);
+  //     console.log(response);
+  //     setTasks(response.data);
+  //   },
+  //   loadTasks();
+  // }, []);
+
+  useEffect(() => {
+    async function getItems() {
+      try {
+        const data = await api.get(`users/${user.id}/tasks`);
+        setTasks(data.data);
+      } catch (error) {
+        alert('Ocorreu um erro ao buscar os items');
+      }
+    }
+    getItems();
+  }, [user]);
+
   const windowHeight = Dimensions.get('window').height;
   function vectorOfColors() {
     let colors = [
@@ -42,6 +76,11 @@ export default function SessionFoco() {
     let random = Math.floor(Math.random() * colors.length);
 
     return colors[random];
+  }
+
+  function openTaskEditor(task) {
+    setIsVisibleEditTask(true);
+    setCurrentTask(task.item);
   }
   return (
     <>
@@ -73,36 +112,49 @@ export default function SessionFoco() {
           isVisible={isVisibleNewTask}
           onCancel={() => setIsVisibleNewTask(false)}
         />
-
         <EditTask
           isVisible={isVisibleEditTask}
           onCancel={() => setIsVisibleEditTask(false)}
+          data={currentTask}
         />
 
-        <FlatList
-          data={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-          keyExtractor={(item) => 1}
-          showsVerticalScrollIndicator={false}
-          numColumns={2}
-          renderItem={() => (
-            <ItemGrid>
-              <ItemContainer background={vectorOfColors()}>
-                <IconContainer>
-                  <Icon name="book" size={windowHeight / 30} color="#fff" />
-                  <MoreButton onPress={() => setIsVisibleEditTask(true)}>
-                    <Icon
-                      name="more-horizontal"
+        {tasks.length != 0 ? (
+          <FlatList
+            data={tasks}
+            keyExtractor={(item) => String(item.id)}
+            showsVerticalScrollIndicator={false}
+            numColumns={2}
+            renderItem={(task) => (
+              <ItemGrid>
+                <ItemContainer background={task.item.color}>
+                  <IconContainer>
+                    <IconPickedFromUser
+                      name={task.item.icon}
                       size={windowHeight / 30}
                       color="#fff"
                     />
-                  </MoreButton>
-                </IconContainer>
-                <ItemTitle>Arquitetura e Desenho de Software</ItemTitle>
-                <ItemDescription>DescriçãoDescrição ...</ItemDescription>
-              </ItemContainer>
-            </ItemGrid>
-          )}
-        />
+                    <MoreButton onPress={() => openTaskEditor(task)}>
+                      <Icon
+                        name="more-horizontal"
+                        size={windowHeight / 30}
+                        color="#fff"
+                      />
+                    </MoreButton>
+                  </IconContainer>
+                  <ItemTitle>{task.item.name}</ItemTitle>
+                  <ItemDescription>{task.item.description}</ItemDescription>
+                </ItemContainer>
+              </ItemGrid>
+            )}
+          />
+        ) : (
+          <NoSessionOfFocus>
+            <NoSessionOfFocusText>
+              {' '}
+              Ainda não há sessões cadastradas
+            </NoSessionOfFocusText>
+          </NoSessionOfFocus>
+        )}
       </Container>
     </>
   );

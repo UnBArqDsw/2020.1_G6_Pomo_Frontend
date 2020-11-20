@@ -8,7 +8,7 @@ export function* signIn({payload}) {
   try {
     const {email, password} = payload;
 
-    const response = yield call(api.post, 'sessions', {
+    const response = yield call(api.post, 'session', {
       email,
       password,
     });
@@ -40,7 +40,7 @@ export function* signUp({payload}) {
     });
     // history.push('/');
   } catch (err) {
-    Alert.alert('Falha no cadrastro', 'Verifique seus dados.');
+    Alert.alert('Falha no cadastro', 'Verifique seus dados.');
 
     yield put(signFailure());
   }
