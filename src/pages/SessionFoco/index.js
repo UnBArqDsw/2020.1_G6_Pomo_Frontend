@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import {FlatList, Dimensions, TouchableOpacity} from 'react-native';
 
 import {
@@ -17,13 +17,39 @@ import Icon from 'react-native-vector-icons/Feather';
 import {SearchBar} from 'react-native-elements';
 import NewTask from '../../components/NewTask';
 import EditTask from '../../components/EditTask';
+import {useDispatch, useSelector} from 'react-redux';
+import api from '../../services/api';
+import {useFocusEffect} from '@react-navigation/native';
 
 export default function SessionFoco() {
   const [search, setSearch] = useState('');
   const [isVisibleNewTask, setIsVisibleNewTask] = useState(false);
   const [isVisibleEditTask, setIsVisibleEditTask] = useState(false);
+  const [tasks, setTasks] = useState('');
+  const user = useSelector((state) => state.user.profile);
 
-  const windowWidth = Dimensions.get('window').width;
+  // useEffect(() => {
+  //   async function loadTasks() {
+  //     const response = await api.get(`users/${user.id}/tasks`);
+  //     console.log(response);
+  //     setTasks(response.data);
+  //   },
+  //   loadTasks();
+  // }, []);
+
+  useEffect(() => {
+    async function getItems() {
+      try {
+        const data = await api.get(`users/${user.id}/tasks`);
+        setTasks(data.data);
+        // console.log(data.data);
+      } catch (error) {
+        alert('Ocorreu um erro ao buscar os items');
+      }
+    }
+    getItems();
+  }, [user]);
+
   const windowHeight = Dimensions.get('window').height;
   function vectorOfColors() {
     let colors = [
@@ -80,12 +106,13 @@ export default function SessionFoco() {
         />
 
         <FlatList
-          data={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-          keyExtractor={(item) => 1}
+          data={tasks}
+          keyExtractor={(item) => String(item.id)}
           showsVerticalScrollIndicator={false}
           numColumns={2}
-          renderItem={() => (
+          renderItem={(item) => (
             <ItemGrid>
+              {console.log(item)}
               <ItemContainer background={vectorOfColors()}>
                 <IconContainer>
                   <Icon name="book" size={windowHeight / 30} color="#fff" />
@@ -97,8 +124,8 @@ export default function SessionFoco() {
                     />
                   </MoreButton>
                 </IconContainer>
-                <ItemTitle>Arquitetura e Desenho de Software</ItemTitle>
-                <ItemDescription>DescriçãoDescrição ...</ItemDescription>
+                <ItemTitle>task</ItemTitle>
+                <ItemDescription>123</ItemDescription>
               </ItemContainer>
             </ItemGrid>
           )}
